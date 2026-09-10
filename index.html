@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0908">
+<title>TonyShop — Acceso inmediato por Telegram</title>
+<meta name="description" content="Elige, paga en Telegram y el bot te da el acceso al momento. 16 accesos en 4 líneas. Sin esperas, sin mensualidades en CP VIP.">
+<link rel="icon" type="image/svg+xml" href="img/marca/icon.svg">
+<link rel="alternate icon" type="image/png" sizes="32x32" href="img/marca/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/marca/icon-180.png">
+<link rel="canonical" href="https://packsmx.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TonyShop">
+<meta property="og:url" content="https://packsmx.com/">
+<meta property="og:title" content="TonyShop — Acceso inmediato por Telegram">
+<meta property="og:description" content="Elige, paga en Telegram y el bot te da el acceso al momento.">
+<meta property="og:locale" content="es_MX">
+<meta property="og:image" content="https://packsmx.com/img/marca/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TonyShop — acceso inmediato por Telegram">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TonyShop — Acceso inmediato por Telegram">
+<meta name="twitter:description" content="Elige, paga en Telegram y el bot te da el acceso al momento.">
+<meta name="twitter:image" content="https://packsmx.com/img/marca/og.jpg">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TONYSHOP — hoja única.
+
+   Criterio de color: un solo acento. El oro se usa para lo que
+   se toca (CTA, precio, dato) y para nada más. Todo lo demás es
+   tinta y papel. El amarillo #ffd400 anterior sobre negro puro
+   leía a landing de cripto; #e6b843 sobre tinta cálida lee a
+   marca. Sin degradados de relleno, sin glow, sin cristal.
+   ============================================================ */
+:root{
+  --tinta:#0a0908;
+  --tinta2:#100f0d;
+  --tinta3:#161513;
+  --papel:#f4f1ea;
+  --gris:#8f897d;
+  --gris2:#5d584e;
+  --linea:#221f1a;
+  --linea2:#2f2b24;
+  --oro:#e6b843;
+  --oro2:#c9942a;
+  --display:'Archivo Black',Manrope,sans-serif;
+  --curva:cubic-bezier(.22,.8,.28,1);
+  --ancho:1280px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--tinta);color:var(--papel);
+  font-family:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+input,button,select{font-family:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+img,video{display:block;max-width:100%}
+[hidden]{display:none !important}
+::selection{background:var(--oro);color:var(--tinta)}
+::-webkit-scrollbar{height:8px;width:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#2b2720;border-radius:9px}
+:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+
+/* grano: lo único "de textura" que queda. Le quita el plástico a
+   los planos grandes de negro sin meter un solo degradado. */
+.grano{position:fixed;inset:-40%;z-index:80;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:granoMov 6s steps(4) infinite}
+@keyframes granoMov{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(2%,-2%)}75%{transform:translate(-1%,-1%)}100%{transform:translate(0,0)}}
+
+/* ---------- tipografía ---------- */
+.dsp{font-family:var(--display);text-transform:uppercase;letter-spacing:-.035em;line-height:.94;text-wrap:balance}
+.kicker{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gris2)}
+.kicker b{color:var(--oro);font-weight:800}
+
+/* ---------- revelado ---------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--curva),transform .7s var(--curva)}
+.rv.on{opacity:1;transform:none}
+/* revelado por palabra, sólo en los titulares grandes */
+.pal{display:inline-block;overflow:hidden;vertical-align:top}
+.pal>span{display:inline-block;transform:translateY(102%);transition:transform .8s var(--curva)}
+.on .pal>span{transform:none}
+
+/* ---------- botones ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:800;font-size:.95rem;letter-spacing:.01em;padding:16px 26px;border-radius:10px;
+  transition:transform .2s var(--curva),background .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:19px;height:19px;flex:0 0 auto}
+.btn-1{background:var(--oro);color:#151005}
+.btn-1:hover{background:#f3c956;transform:translateY(-2px)}
+.btn-1:active{transform:translateY(0) scale(.985)}
+.btn-2{border:1px solid var(--linea2);color:var(--papel)}
+.btn-2:hover{border-color:var(--gris2);background:var(--tinta3);transform:translateY(-2px)}
+.btn-sm{padding:11px 18px;font-size:.85rem;border-radius:9px}
+.btn-lg{padding:19px 34px;font-size:1.05rem;border-radius:12px}
+
+/* ---------- navbar ---------- */
+.nav{position:sticky;top:0;z-index:60;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s}
+.nav.pegado{background:rgba(10,9,8,.86);backdrop-filter:blur(16px) saturate(1.2);border-bottom-color:var(--linea)}
+.nav-in{max-width:var(--ancho);margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:26px}
+.marca{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.marca-sig{width:30px;height:30px;border-radius:7px;background:var(--oro);color:#151005;display:grid;place-items:center;font-family:var(--display);font-size:.85rem}
+.marca-txt{font-family:var(--display);font-size:1.02rem;letter-spacing:-.02em;text-transform:uppercase}
+.marca-txt span{color:var(--oro)}
+.nav-links{display:flex;gap:2px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{color:var(--gris);font-size:.85rem;font-weight:700;padding:9px 13px;border-radius:8px;white-space:nowrap;transition:color .18s,background .18s}
+.nav-links a:hover,.nav-links a.act{color:var(--papel);background:var(--tinta3)}
+.crecer{flex:1}
+/* Cambio de idioma. Discreto: es una utilidad, no una llamada a la
+   acción — no debe competir con el botón de comprar. */
+.idioma{flex:0 0 auto;display:flex;align-items:center;gap:6px;
+  border:1px solid var(--linea2);border-radius:8px;padding:8px 11px;
+  font-size:.76rem;font-weight:800;letter-spacing:.08em;color:var(--gris);
+  transition:color .2s,border-color .2s}
+.idioma:hover{color:var(--papel);border-color:var(--gris2)}
+.idioma b{color:var(--oro);font-weight:800}
+@media(max-width:860px){.idioma{margin-left:auto}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:clamp(500px,72vh,680px);display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--linea)}
+/* mosaico con el material real del catálogo: la prueba visual no se
+   fabrica, ya está en img/. Va oscurecido para que el titular mande. */
+.hero-mosaico{position:absolute;inset:0;z-index:0;display:grid;gap:6px;
+  grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;
+  transform:scale(1.12) rotate(-3deg);transform-origin:center;opacity:.26;filter:blur(2.5px)}
+.hero-mosaico div{position:relative;overflow:hidden;background:var(--tinta2)}
+.hero-mosaico img,.hero-mosaico video{width:100%;height:100%;object-fit:cover;filter:grayscale(.45) contrast(1.05) brightness(.64)}
+.hero-mosaico .cl{animation:deriva 34s ease-in-out infinite alternate}
+@keyframes deriva{from{transform:translateY(0)}to{transform:translateY(-42px)}}
+.hero-luz{position:absolute;inset:-6%;z-index:2;pointer-events:none;
+  background:url("img/marca/luz.jpg") center/cover no-repeat;
+  mix-blend-mode:screen;opacity:.55;animation:vaiven 26s ease-in-out infinite alternate}
+@keyframes vaiven{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.12) translate(-2.5%,1.5%)}}
+.hero-velo{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(180deg,rgba(10,9,8,.92) 0%,rgba(10,9,8,.62) 38%,rgba(10,9,8,.88) 78%,var(--tinta) 100%),
+  radial-gradient(115% 85% at 22% 46%,rgba(10,9,8,.9) 0%,rgba(10,9,8,.32) 55%,transparent 78%)}
+.hero-in{position:relative;z-index:3;max-width:var(--ancho);margin:0 auto;padding:120px 28px 56px;width:100%}
+.hero-marca{display:inline-flex;align-items:center;gap:9px;margin-bottom:26px;color:#cdc5b4;text-shadow:0 1px 12px rgba(10,9,8,.85)}
+.hero-marca i{width:6px;height:6px;border-radius:50%;background:var(--oro);flex:0 0 auto}
+.hero h1{font-family:var(--display);text-transform:uppercase;letter-spacing:-.04em;line-height:.96;
+  font-size:clamp(2.9rem,9.2vw,7rem);max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--oro)}
+.hero-sub{margin-top:26px;max-width:44ch;font-size:clamp(1.02rem,1.9vw,1.22rem);line-height:1.5;color:#b8b1a3;font-weight:500}
+.hero-ctas{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.hero-pie{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap;align-items:center}
+.hero-pie div{display:flex;align-items:baseline;gap:8px}
+.hero-pie b{font-family:var(--display);font-size:1.5rem;color:var(--papel);letter-spacing:-.02em}
+.hero-pie span{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris2)}
+.hero-in>*{animation:entra .85s var(--curva) both}
+.hero-in>*:nth-child(1){animation-delay:.04s}
+.hero-in>*:nth-child(2){animation-delay:.1s}
+.hero-in>*:nth-child(3){animation-delay:.18s}
+.hero-in>*:nth-child(4){animation-delay:.26s}
+.hero-in>*:nth-child(5){animation-delay:.34s}
+@keyframes entra{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.baja{position:absolute;left:50%;bottom:22px;z-index:3;transform:translateX(-50%);color:var(--gris2);font-size:1.3rem;animation:baja 2.4s ease-in-out infinite}
+@keyframes baja{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,7px);opacity:1}}
+
+/* ---------- cinta de datos ---------- *
+   Cuatro números y ninguno inventado: salen de contar SECTIONS.
+   Si mañana subís un pack más, el número sube solo. */
+.cinta{border-bottom:1px solid var(--linea);background:var(--tinta2)}
+.cinta-in{max-width:var(--ancho);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr)}
+.cinta-it{padding:32px 18px;text-align:center;border-left:1px solid var(--linea)}
+.cinta-it:first-child{border-left:0}
+.cinta-it b{display:block;font-family:var(--display);font-size:clamp(1.9rem,4.2vw,2.9rem);letter-spacing:-.03em;line-height:1}
+.cinta-it span{display:block;margin-top:8px;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gris2)}
+
+/* ---------- secciones ---------- */
+.blq{max-width:var(--ancho);margin:0 auto;padding:104px 28px}
+.blq-cab{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:44px}
+.blq-cab h2{font-family:var(--display);text-transform:uppercase;letter-spacing:-.035em;line-height:1;
+  font-size:clamp(1.9rem,4.6vw,3.2rem);max-width:18ch}
+.blq-cab h2 em{font-style:normal;color:var(--oro)}
+.blq-cab p{color:var(--gris);font-size:.97rem;line-height:1.55;max-width:38ch}
+.num{font-family:var(--display);font-size:.72rem;color:var(--oro);letter-spacing:.1em;margin-bottom:14px;display:block}
+
+/* ---------- categorías ---------- */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cat{position:relative;aspect-ratio:3/4.4;overflow:hidden;border-radius:12px;border:1px solid var(--linea);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;transition:border-color .3s,transform .4s var(--curva)}
+.cat:hover{border-color:var(--oro2);transform:translateY(-5px)}
+.cat-med{position:absolute;inset:0;z-index:0}
+.cat-med img,.cat-med video{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.55);transition:transform .8s var(--curva),filter .5s}
+.cat:hover .cat-med img,.cat:hover .cat-med video{transform:scale(1.07);filter:grayscale(0) brightness(.72)}
+.cat-velo{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,9,8,.15) 30%,rgba(10,9,8,.9) 100%)}
+.cat-txt{position:relative;z-index:2}
+.cat-txt h3{font-family:var(--display);text-transform:uppercase;font-size:1.28rem;letter-spacing:-.025em;line-height:1}
+.cat-txt p{margin-top:9px;color:#a9a294;font-size:.81rem;line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cat-n{position:absolute;top:18px;right:18px;z-index:2;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--papel);background:rgba(10,9,8,.6);backdrop-filter:blur(6px);border:1px solid var(--linea2);padding:5px 10px;border-radius:999px}
+
+/* Sello por línea. Los cuatro salieron de una sola imagen para que
+   compartan trazo y tamaño: generados por separado nunca cuadran. */
+.cat-sello{position:absolute;top:18px;left:18px;z-index:2;width:46px;height:46px;
+  opacity:.75;transition:opacity .35s var(--curva),transform .45s var(--curva)}
+.cat-sello img{width:100%;height:100%;object-fit:contain}
+.cat:hover .cat-sello{opacity:1;transform:scale(1.08) rotate(-4deg)}
+
+/* ---------- utilidad: buscar / guardados ---------- */
+.util{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:30px}
+.buscar{position:relative;flex:1 1 250px;max-width:340px}
+.buscar i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--gris2);font-style:normal}
+.buscar input{width:100%;background:var(--tinta2);border:1px solid var(--linea);border-radius:10px;padding:13px 16px 13px 38px;font-size:.9rem;outline:none;transition:border-color .2s,background .2s}
+.buscar input::placeholder{color:var(--gris2)}
+.buscar input:focus{border-color:var(--linea2);background:var(--tinta3)}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--linea);background:var(--tinta2);color:var(--gris);font-size:.83rem;font-weight:700;padding:12px 16px;border-radius:10px;transition:.2s}
+.chip:hover{color:var(--papel);border-color:var(--linea2)}
+.chip.on{color:var(--oro);border-color:var(--oro2);background:rgba(230,184,67,.08)}
+.chip svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.util .cta-n{margin-left:auto;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gris2)}
+
+/* ---------- catálogo editorial ---------- */
+.linea-sec{display:flex;align-items:center;gap:18px;margin:74px 0 26px}
+.linea-sec:first-of-type{margin-top:0}
+.linea-sec h3{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.3rem,2.9vw,1.85rem);letter-spacing:-.03em;white-space:nowrap}
+.linea-sec .rayita{flex:1;height:1px;background:var(--linea2)}
+.linea-sec .cnt{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gris2);white-space:nowrap}
+.linea-desc{color:var(--gris);font-size:.88rem;line-height:1.6;margin:-14px 0 26px;max-width:76ch}
+
+/* la rejilla deja de ser uniforme: el primero de cada línea ocupa
+   el doble. Rompe el patrón de catálogo y crea jerarquía. */
+.rej{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.rej .ficha.destacada{grid-column:span 2;grid-row:span 2}
+.rej .ficha:nth-child(4):last-child{grid-column:span 2}
+.rej .ficha.destacada .lienzo{aspect-ratio:auto}
+.rej .ficha:nth-child(4):last-child .lienzo{aspect-ratio:16/9}
+
+.ficha{position:relative;display:flex;flex-direction:column;border:1px solid var(--linea);border-radius:14px;overflow:hidden;background:var(--tinta2);transition:border-color .3s,transform .4s var(--curva)}
+.ficha:hover{border-color:var(--linea2);transform:translateY(-4px)}
+.lienzo{position:relative;aspect-ratio:4/5;overflow:hidden;background:#060505;cursor:zoom-in;flex:1 1 auto}
+.hueco{position:absolute;inset:0;background:repeating-linear-gradient(135deg,#0d0c0a 0 12px,#131210 12px 24px);display:grid;place-items:center}
+.hueco span{font:500 10px ui-monospace,Menlo,monospace;color:#46403a;letter-spacing:.12em;text-transform:uppercase}
+.lienzo>img,.lienzo>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:brightness(.9) saturate(.94);transition:transform .8s var(--curva),filter .45s}
+.ficha:hover .lienzo>img,.ficha:hover .lienzo>video{transform:scale(1.05);filter:brightness(1.02) saturate(1.04)}
+.lienzo-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,7,6,.45) 0%,rgba(8,7,6,0) 26%,rgba(8,7,6,.06) 58%,rgba(8,7,6,.86) 100%)}
+.marcador{position:absolute;top:11px;right:11px;z-index:3;width:33px;height:33px;border-radius:8px;display:grid;place-items:center;
+  background:rgba(10,9,8,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.09);color:var(--papel);transition:.2s}
+.marcador:hover{background:rgba(10,9,8,.85)}
+.marcador svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.marcador.on{color:var(--oro)}
+.marcador.on svg{fill:currentColor}
+.marcador.late svg{animation:late .45s var(--curva)}
+@keyframes late{0%,100%{transform:scale(1)}35%{transform:scale(1.3)}60%{transform:scale(.93)}}
+.cuenta{position:absolute;bottom:11px;left:11px;z-index:3;font-size:.71rem;font-weight:700;color:#d6cfc0;
+  background:rgba(10,9,8,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);padding:5px 10px;border-radius:999px}
+.reproduce{position:absolute;top:11px;left:11px;z-index:3;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(10,9,8,.55);backdrop-filter:blur(8px);color:#fff;font-size:.62rem;padding-left:2px;transition:opacity .3s}
+.ficha.viva .reproduce{opacity:.3}
+.ficha-pie{padding:15px 16px 17px;display:flex;flex-direction:column;gap:10px}
+.ficha-cat{font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gris2)}
+.ficha-nom{font-size:1.02rem;font-weight:800;letter-spacing:-.015em;line-height:1.25}
+.ficha.destacada .ficha-nom{font-size:1.32rem}
+.plaza{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;border:1px solid var(--linea2);padding:5px 11px;border-radius:7px}
+.plaza i{width:4px;height:4px;border-radius:50%;background:var(--oro)}
+.plaza b{font-size:.74rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--oro)}
+.gana{font-size:.83rem;color:#a8a194;line-height:1.5;display:flex;gap:8px}
+.gana i{color:var(--oro);font-style:normal;flex:0 0 auto}
+.ficha-desc{margin:0;font-size:.82rem;line-height:1.55;color:var(--gris)}
+.ficha-desc b{color:#c9c1b0;font-weight:800}
+.ficha .btn{margin-top:4px;width:100%}
+
+/* ---------- beneficios ---------- */
+.porque{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--tinta2)}
+.porque-rej{max-width:var(--ancho);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr)}
+.porque-it{padding:56px 26px 60px;border-left:1px solid var(--linea)}
+.porque-it:first-child{border-left:0}
+.porque-it b{display:block;font-family:var(--display);text-transform:uppercase;font-size:1.12rem;letter-spacing:-.02em;line-height:1.05;margin:16px 0 12px}
+.porque-it p{color:var(--gris);font-size:.87rem;line-height:1.6}
+.porque-it .ico{display:block;width:46px;height:46px}
+.porque-it .ico img{width:100%;height:100%;object-fit:contain}
+
+/* ---------- faq ---------- */
+.faq{max-width:840px}
+.faq-it{border-bottom:1px solid var(--linea)}
+.faq-it:first-child{border-top:1px solid var(--linea)}
+.faq-q{width:100%;display:flex;align-items:center;gap:18px;padding:24px 4px;text-align:left;font-size:1.02rem;font-weight:700;letter-spacing:-.01em;transition:color .2s}
+.faq-q:hover{color:var(--oro)}
+.faq-q .mas{margin-left:auto;flex:0 0 auto;width:22px;height:22px;position:relative;color:var(--gris2);transition:color .2s,transform .3s var(--curva)}
+.faq-q .mas::before,.faq-q .mas::after{content:'';position:absolute;left:50%;top:50%;background:currentColor;transition:transform .3s var(--curva)}
+.faq-q .mas::before{width:13px;height:1.5px;transform:translate(-50%,-50%)}
+.faq-q .mas::after{width:1.5px;height:13px;transform:translate(-50%,-50%)}
+.faq-it.abierta .faq-q{color:var(--oro)}
+.faq-it.abierta .mas{color:var(--oro)}
+.faq-it.abierta .mas::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s var(--curva)}
+.faq-it.abierta .faq-a{grid-template-rows:1fr}
+.faq-a>div{overflow:hidden}
+.faq-a p{color:var(--gris);font-size:.93rem;line-height:1.65;padding:0 4px 26px;max-width:64ch}
+
+/* ---------- cierre ---------- */
+.cierre-tela{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.cierre-tela::before{content:'';position:absolute;inset:-8%;
+  background:url("img/marca/noche.jpg") center/cover no-repeat;
+  opacity:.95;animation:vaiven 30s ease-in-out infinite alternate}
+.cierre-tela::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(120% 88% at 50% 46%,rgba(10,9,8,.12) 0%,rgba(10,9,8,.62) 52%,rgba(10,9,8,.93) 84%,var(--tinta) 100%)}
+.cierre>*:not(.cierre-tela){position:relative;z-index:1}
+.cierre{position:relative;text-align:center;padding:120px 28px 128px;border-top:1px solid var(--linea);overflow:hidden}
+.cierre h2{font-family:var(--display);text-transform:uppercase;letter-spacing:-.04em;line-height:1;
+  font-size:clamp(2.3rem,7vw,5rem);max-width:16ch;margin:0 auto}
+.cierre h2 em{font-style:normal;color:var(--oro)}
+.cierre p{margin:24px auto 0;max-width:40ch;color:var(--gris);font-size:1.02rem;line-height:1.55}
+.cierre .hero-ctas{justify-content:center;margin-top:38px}
+.pie{border-top:1px solid var(--linea);padding:34px 28px 40px;text-align:center;color:var(--gris2);font-size:.8rem;line-height:1.7}
+.pie a{color:var(--gris)}
+.pie a:hover{color:var(--oro)}
+
+/* ---------- barra móvil ---------- */
+.movil{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:10px;align-items:center;
+  padding:11px 14px calc(11px + env(safe-area-inset-bottom));background:rgba(10,9,8,.93);backdrop-filter:blur(18px);border-top:1px solid var(--linea)}
+.movil .btn{flex:1}
+.arriba{width:46px;height:46px;border-radius:10px;flex:0 0 auto;display:grid;place-items:center;border:1px solid var(--linea2);color:var(--gris);font-size:1.05rem}
+
+/* ---------- visor ---------- */
+.visor{position:fixed;inset:0;z-index:95;background:rgba(6,5,5,.96);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:22px;animation:aparece .2s ease}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+@keyframes sube{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.visor-caja{position:relative;width:min(440px,100%);height:min(90vh,900px);display:flex;flex-direction:column;
+  background:#0a0908;border:1px solid var(--linea2);border-radius:18px;overflow:hidden;animation:sube .3s var(--curva)}
+.visor-barras{position:absolute;top:0;left:0;right:0;z-index:8;display:flex;gap:3px;padding:12px 12px 0}
+.visor-barras i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.24);overflow:hidden}
+.visor-barras i b{display:block;height:100%;background:#fff;transform-origin:left;transform:scaleX(0)}
+.visor-barras i.hecha b{transform:scaleX(1)}
+.visor-barras i.activa b{animation:avanza var(--dur,4.5s) linear forwards}
+@keyframes avanza{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.visor-cab{position:absolute;top:0;left:0;right:0;z-index:7;display:flex;align-items:center;gap:11px;padding:26px 13px 28px;
+  background:linear-gradient(180deg,rgba(6,5,5,.8),transparent)}
+.visor-sig{width:32px;height:32px;border-radius:8px;background:var(--oro);color:#151005;display:grid;place-items:center;font-family:var(--display);font-size:.78rem;flex:0 0 auto}
+.visor-nom{font-weight:800;font-size:.88rem;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.visor-sub{color:rgba(255,255,255,.58);font-size:.72rem;font-weight:600;line-height:1.3}
+.visor-bt{width:33px;height:33px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.1);color:#fff;font-size:.95rem;flex:0 0 auto;transition:background .2s}
+.visor-bt:hover{background:rgba(255,255,255,.2)}
+.visor-tela{position:relative;flex:1;min-height:0;background:#060505;display:grid;place-items:center;overflow:hidden}
+.visor-fondo{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;filter:blur(36px) saturate(1.4) brightness(.45);z-index:0}
+.visor-media{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;animation:aparece .3s ease}
+.visor-zona{position:absolute;top:0;bottom:82px;width:34%;z-index:6}
+.visor-zona.izq{left:0}
+.visor-zona.der{right:0}
+.visor-fl{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;
+  background:rgba(10,9,8,.6);border:1px solid var(--linea2);color:var(--papel);display:grid;place-items:center;opacity:0;transition:opacity .22s,background .2s}
+.visor-caja:hover .visor-fl{opacity:1}
+.visor-fl:hover{background:var(--oro);color:#151005}
+.visor-zona.izq .visor-fl{left:12px}
+.visor-zona.der .visor-fl{right:12px}
+.visor-pie{position:absolute;left:0;right:0;bottom:0;z-index:7;padding:38px 14px 15px;
+  background:linear-gradient(0deg,rgba(6,5,5,.95) 30%,transparent);display:flex;align-items:center;gap:12px}
+.visor-pie .t{min-width:0;flex:1}
+.visor-pie .t b{display:block;font-size:.93rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.visor-pie .t span{color:rgba(255,255,255,.55);font-size:.75rem;font-weight:600}
+
+
+/* ---------- banda de muestra ---------- *
+   Tus propias fotos, censuradas. El embudo es: acá se tapa, en el
+   catalogo se abre. Censurar sube el deseo mas que mostrar, y ademas
+   esto es material real: no hay nada generado en esta banda. */
+.muestra{position:relative;overflow:hidden;border-bottom:1px solid var(--linea);background:var(--tinta);scroll-margin-top:80px}
+.muestra-tira{display:flex;gap:8px;width:max-content;padding:0;animation:desfile 46s linear infinite}
+.muestra:hover .muestra-tira{animation-play-state:paused}
+@keyframes desfile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.muestra-it{position:relative;flex:0 0 auto;width:168px;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#070606}
+.muestra-it img,.muestra-it video{width:100%;height:100%;object-fit:cover;
+  filter:grayscale(.75) contrast(1.25) brightness(.42) sepia(.25)}
+/* la barra de censura */
+.muestra-it::after{content:'';position:absolute;left:0;right:0;top:38%;height:22%;background:#050404}
+.muestra-velo{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,var(--tinta) 0%,rgba(10,9,8,.2) 20%,rgba(10,9,8,.2) 80%,var(--tinta) 100%),
+  linear-gradient(180deg,rgba(10,9,8,.2) 0%,rgba(10,9,8,.5) 42%,rgba(10,9,8,.93) 78%,var(--tinta) 100%)}
+.muestra-txt{position:relative;z-index:2;max-width:var(--ancho);margin:0 auto;padding:0 28px 72px;margin-top:-84px;text-align:center}
+.muestra-txt h2{font-family:var(--display);text-transform:uppercase;letter-spacing:-.035em;line-height:1;
+  font-size:clamp(1.8rem,4.4vw,3rem);max-width:16ch;margin:0 auto}
+.muestra-txt h2 em{font-style:normal;color:var(--oro)}
+.muestra-txt p{color:var(--gris);font-size:.95rem;line-height:1.55;margin:16px auto 26px;max-width:44ch}
+
+/* ---------- puerta de edad ---------- */
+.puerta{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:24px;background:#060505;overflow:hidden}
+.puerta::before{content:'';position:absolute;inset:0;background:url("img/marca/umbral.jpg") center/cover no-repeat;
+  opacity:.85;animation:umbral 18s ease-out both}
+.puerta::after{content:'';position:absolute;inset:0;background:
+  radial-gradient(95% 75% at 50% 52%,rgba(6,5,5,.22) 0%,rgba(6,5,5,.7) 52%,rgba(6,5,5,.92) 100%)}
+@keyframes umbral{from{transform:scale(1.07)}to{transform:scale(1)}}
+.puerta-caja{position:relative;z-index:1}
+.puerta-caja{width:min(420px,100%);text-align:center;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:38px 28px 30px;background:rgba(12,10,8,.72);backdrop-filter:blur(18px) saturate(1.2)}
+.puerta-sig{width:46px;height:46px;margin:0 auto 20px;border-radius:11px;background:var(--oro);color:#151005;display:grid;place-items:center;font-family:var(--display);font-size:1.15rem}
+.puerta h2{font-family:var(--display);text-transform:uppercase;letter-spacing:-.03em;line-height:1;font-size:1.5rem;margin-bottom:12px}
+.puerta p{color:var(--gris);font-size:.9rem;line-height:1.6;margin-bottom:24px}
+.puerta .btn{width:100%}
+.puerta .no{display:block;margin-top:14px;color:var(--gris2);font-size:.82rem;font-weight:700}
+.puerta .no:hover{color:var(--gris)}
+.puerta .legal{margin-top:20px;padding-top:16px;border-top:1px solid var(--linea);color:#4a463d;font-size:.72rem;line-height:1.5}
+
+
+/* ---------- barra de scrub ---------- *
+   Al pasar el cursor por una portada de video, el eje X controla el
+   tiempo del clip: mover la mano es rebobinar. La barra dorada da la
+   pista de que eso se puede hacer; sin ella el gesto no se descubre. */
+.lienzo .barra{position:absolute;left:0;right:0;bottom:0;z-index:4;height:2px;background:rgba(255,255,255,.14);
+  opacity:0;transition:opacity .25s}
+.lienzo .barra i{display:block;height:100%;width:0;background:var(--oro)}
+.ficha:hover .lienzo .barra{opacity:1}
+
+/* ---------- transición de tarjeta a visor ---------- *
+   El medio no aparece: crece desde la propia portada hasta pantalla
+   completa. Es la diferencia entre "se abrió un modal" y "entré". */
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-old(media-activa),
+  ::view-transition-new(media-activa){animation-duration:.42s;animation-timing-function:cubic-bezier(.22,.8,.28,1)}
+  ::view-transition-group(media-activa){z-index:1}
+}
+
+/* ---------- vacío ---------- */
+.vacio{padding:70px 26px;text-align:center;color:var(--gris2)}
+.vacio b{display:block;font-size:1.05rem;font-weight:800;color:var(--gris);margin-bottom:6px}
+
+/* ============================================================
+   RESPONSIVE — probado en 375 / 390 / 430 / 768 / 1024 / 1440 / 1920
+   ============================================================ */
+@media(min-width:1600px){:root{--ancho:1400px}}
+@media(max-width:1080px){
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .cat{aspect-ratio:3/3.6}
+  .rej{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rej .ficha.destacada{grid-column:span 2;grid-row:auto}
+  .rej .ficha:nth-child(4):last-child{grid-column:auto}
+  .rej .ficha:nth-child(4):last-child .lienzo{aspect-ratio:4/5}
+  .rej .ficha.destacada .lienzo{aspect-ratio:16/11}
+  .porque-rej{grid-template-columns:repeat(2,1fr)}
+  .porque-it:nth-child(3){border-left:0}
+  .porque-it:nth-child(-n+2){border-bottom:1px solid var(--linea)}
+}
+@media(max-width:860px){
+  .blq{padding:78px 22px}
+  .nav-links{display:none}
+  .hero-in{padding:96px 22px 44px}
+  .cinta-in{grid-template-columns:repeat(2,1fr);padding:0 22px}
+  .cinta-it:nth-child(3){border-left:0}
+  .cinta-it:nth-child(-n+2){border-bottom:1px solid var(--linea)}
+  .cinta-it{padding:26px 14px}
+  .movil{display:flex}
+  .pie{padding-bottom:104px}
+  .nav .btn{display:none}
+  .visor{padding:0}
+  .visor-caja{width:100%;height:100%;border:0;border-radius:0}
+  .visor-fl{display:none}
+  .porque-it{padding:40px 20px 44px}
+  .cierre{padding:88px 22px 96px}
+}
+@media(max-width:560px){
+  .blq{padding:64px 18px}
+  .hero-in{padding:84px 18px 40px}
+  .hero{min-height:74vh}
+  .hero-mosaico{grid-template-columns:repeat(3,1fr)}
+  .hero-luz{background-image:url("img/marca/luz-movil.jpg");opacity:.62}
+  .cierre-tela::before{background-image:url("img/marca/noche-movil.jpg")}
+  .cats{grid-template-columns:1fr;gap:12px}
+  .muestra-it{width:132px}
+  .muestra-txt{margin-top:-58px;padding-bottom:56px}
+  .cat{aspect-ratio:16/10}
+  .rej{grid-template-columns:1fr;gap:16px}
+  .linea-desc{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .rej .ficha.destacada{grid-column:auto}
+  .rej .ficha.destacada .lienzo{aspect-ratio:4/5}
+  .porque-rej{grid-template-columns:1fr;padding:0 18px}
+  .porque-it{border-left:0;border-bottom:1px solid var(--linea)}
+  .porque-it:last-child{border-bottom:0}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{width:100%}
+  .util .cta-n{margin-left:0;width:100%}
+  .marcador{width:40px;height:40px}
+  .cinta-it b{font-size:1.75rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.05s !important}
+  .rv{opacity:1;transform:none}
+  .pal>span{transform:none}
+  .grano,.hero-mosaico .cl,.baja,.hero-luz,.cierre-tela::before,.muestra-tira,.puerta::before{animation:none}
+  .hero-in>*{animation:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="grano" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="marca" href="#top">
+      <span class="marca-sig">T</span>
+      <span class="marca-txt">Tony<span>Shop</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Secciones"></nav>
+    <span class="crecer"></span>
+    <button class="idioma" id="idioma" type="button" aria-label="Language"></button>
+    <a class="btn btn-1 btn-sm" id="ctaNav" target="_blank" rel="noopener"></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 01 · ATENCIÓN -->
+  <section class="hero" id="inicio">
+    <div class="hero-mosaico" id="mosaico" aria-hidden="true"></div>
+    <div class="hero-luz" aria-hidden="true"></div>
+    <div class="hero-velo" aria-hidden="true"></div>
+    <div class="hero-in">
+      <div class="hero-marca kicker"><i></i><span id="heroKicker"></span></div>
+      <h1 id="heroTitulo"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-ctas">
+        <a class="btn btn-1 btn-lg" id="ctaHero1" target="_blank" rel="noopener"></a>
+        <a class="btn btn-2 btn-lg" href="#catalogo" id="ctaHero2"></a>
+      </div>
+      <div class="hero-pie" id="heroPie"></div>
+    </div>
+    <span class="baja" aria-hidden="true">↓</span>
+  </section>
+
+  <!-- 02 · PRUEBA: lo que hay dentro, contado del propio catálogo -->
+  <section class="cinta" id="cinta">
+    <div class="cinta-in" id="cintaIn"></div>
+  </section>
+
+  <!-- 03 · PRUEBA VISUAL: la muestra, censurada -->
+  <section class="muestra" id="muestra">
+    <div class="muestra-tira" id="muestraTira" aria-hidden="true"></div>
+    <div class="muestra-velo" aria-hidden="true"></div>
+    <div class="muestra-txt rv">
+      <span class="num" id="numMuestra">01 — La muestra</span>
+      <h2 id="muestraTitulo"></h2>
+      <p id="muestraSub"></p>
+      <a class="btn btn-1" href="#catalogo" id="ctaMuestra"></a>
+    </div>
+  </section>
+
+  <!-- 04 · CURIOSIDAD: las líneas -->
+  <section class="blq" id="lineas">
+    <div class="blq-cab rv">
+      <div>
+        <span class="num" id="numLineas">02 — Líneas</span>
+        <h2 id="catsTitulo"></h2>
+      </div>
+      <span class="crecer"></span>
+      <p id="catsSub"></p>
+    </div>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <!-- 04 · DESEO: el catálogo -->
+  <section class="blq" id="catalogo" style="padding-top:0">
+    <div class="blq-cab rv">
+      <div>
+        <span class="num" id="numCatalogo">03 — Catálogo</span>
+        <h2 id="catTitulo"></h2>
+      </div>
+      <span class="crecer"></span>
+      <p id="catSub"></p>
+    </div>
+
+    <div class="util">
+      <div class="buscar" id="cajaBuscar">
+        <i>⌕</i>
+        <input type="search" id="q" placeholder="Buscar plaza o nombre…" autocomplete="off" aria-label="Buscar">
+      </div>
+      <button class="chip" id="chipGuardados" type="button" hidden>
+        <svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        <span id="txtGuardados">Guardados</span><b id="nGuardados"></b>
+      </button>
+      <span class="cta-n" id="cuentaTotal"></span>
+    </div>
+
+    <div id="listado"></div>
+    <div class="vacio" id="vacio" hidden>
+      <b id="vacioTit">Nada con ese nombre</b>
+      <span id="vacioSub">Probá con otra plaza.</span>
+    </div>
+  </section>
+
+  <!-- 05 · REDUCCIÓN DE FRICCIÓN -->
+  <section class="porque" id="porque">
+    <div class="porque-rej" id="porqueRej"></div>
+  </section>
+
+  <!-- 06 · OBJECIONES -->
+  <section class="blq" id="faq">
+    <div class="blq-cab rv">
+      <div>
+        <span class="num" id="numFaq">04 — Antes de comprar</span>
+        <h2 id="faqTitulo"></h2>
+      </div>
+    </div>
+    <div class="faq" id="faqLista"></div>
+  </section>
+
+  <!-- 07 · CIERRE -->
+  <section class="cierre rv" id="cierre">
+    <div class="cierre-tela" aria-hidden="true"></div>
+    <h2 id="cierreTitulo"></h2>
+    <p id="cierreSub"></p>
+    <div class="hero-ctas">
+      <a class="btn btn-1 btn-lg" id="ctaFinal1" target="_blank" rel="noopener"></a>
+      <a class="btn btn-2 btn-lg" id="ctaFinal2" target="_blank" rel="noopener"></a>
+    </div>
+  </section>
+</main>
+
+<footer class="pie" id="pie"></footer>
+
+<nav class="movil" aria-label="Comprar">
+  <button class="arriba" id="arriba" type="button" aria-label="Volver arriba">↑</button>
+  <a class="btn btn-1" id="ctaMovil" target="_blank" rel="noopener"></a>
+</nav>
+
+<div class="puerta" id="puerta" hidden role="dialog" aria-modal="true" aria-labelledby="puertaTit">
+  <div class="puerta-caja">
+    <div class="puerta-sig">18</div>
+    <h2 id="puertaTit"></h2>
+    <p id="puertaTxt"></p>
+    <button class="btn btn-1" id="puertaSi" type="button"></button>
+    <a class="no" id="puertaNo" href="https://www.google.com" rel="noopener"></a>
+    <p class="legal" id="puertaLegal"></p>
+  </div>
+</div>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Vista previa">
+  <div class="visor-caja" id="visorCaja">
+    <div class="visor-barras" id="visorBarras"></div>
+    <div class="visor-cab">
+      <span class="visor-sig" id="visorSig">T</span>
+      <div style="min-width:0;flex:1">
+        <div class="visor-nom" id="visorNom"></div>
+        <div class="visor-sub" id="visorSub"></div>
+      </div>
+      <button class="visor-bt" id="visorSon" type="button" aria-label="Activar sonido">🔇</button>
+      <button class="visor-bt" id="visorCerrar" type="button" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="visor-tela" id="visorTela">
+      <div class="hueco"><span id="visorHueco"></span></div>
+      <button class="visor-zona izq" id="visorPrev" type="button" aria-label="Anterior"><span class="visor-fl">‹</span></button>
+      <button class="visor-zona der" id="visorNext" type="button" aria-label="Siguiente"><span class="visor-fl">›</span></button>
+    </div>
+    <div class="visor-pie">
+      <div class="t"><b id="visorPieNom"></b><span id="visorPieSub"></span></div>
+      <a class="btn btn-1 btn-sm" id="visorCta" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+</div>
+<script>
+/* ============================================================
+   CONFIG — todo el texto de la página vive acá.
+   Cambiar copy no exige tocar ni una línea de HTML.
+   ============================================================ */
+const CONFIG = {
+  botTelegram: "https://t.me/TonyShoppbot",
+  hubTelegram: "https://t.me/mediaexclusiva",
+  /* La portada al compartir (og:image) va estatica en el <head>:
+     los crawlers de Telegram y X no ejecutan JS. Si la cambias,
+     cambiala alli, en img/marca/og.jpg. */
+
+  cta: { comprar: "Comprar por Telegram", catalogo: "Ver el catálogo", hub: "Entrar al canal",
+         tarjeta: "Pagar con tarjeta" },
+
+  /* Worker que crea el link de Clip y, al terminar el pago, devuelve al
+     cliente a Telegram. Existe porque de cada 4 que tocan "comprar", ~3
+     nunca llegan a abrir el bot: pagando primero, el salto a Telegram
+     queda DESPUES de que la plata entro. Ver botventas/scripts/clip-worker.
+     El boton de Telegram se queda como esta -- la transferencia es el
+     metodo que mas gente completa y no hay que tocarlo. */
+  workerPago: "https://tonyshopago.gyzstock.workers.dev/pagar",
+
+  hero: {
+    kicker: "Muestras abiertas · Entrega automática",
+    /* El titular dice QUÉ hay, no cómo se compra: el visitante que llega
+       de X quiere saber qué contenido es y cuánto cuesta entrar, no el
+       flujo de pago. <em> = la palabra en oro. */
+    titulo: "Filtradas MX.<br>BlackHub.<br><em>Un pago.</em>",
+    sub: "Packs de los 32 estados, colegialas, voyeur, hardcore y más. Mirás la muestra sin registro. Pagás en Telegram y el bot te da el acceso al instante."
+  },
+
+  lineas: {
+    titulo: "Elegí tu <em>línea</em>.",
+    sub: "Cada línea es un tipo de acceso distinto. Tocá una para ver todo lo que tiene adentro."
+  },
+
+  catalogo: {
+    titulo: "Todo lo que hay <em>hoy</em>",
+    sub: "Tocá cualquier portada para ver la muestra completa antes de comprar."
+  },
+
+  /* Los cuatro beneficios salen de las características reales de los
+     productos, no de un manual de marketing. */
+  porque: [
+    { ico: "img/marca/ben-rayo.png",   t: "Acceso inmediato",    d: "El bot entrega apenas se confirma el pago. No hay cola ni horario." },
+    { ico: "img/marca/ben-escudo.png", t: "Reposición incluida", d: "Si un acceso deja de funcionar, se repone sin costo." },
+    { ico: "img/marca/ben-caja.png",   t: "Fuera de Telegram",   d: "CP VIP vive fuera del grupo: si el grupo cae, tu acceso sigue vivo." },
+    { ico: "img/marca/ben-chat.png",   t: "Soporte directo",     d: "Escribís al mismo bot y te contesta una persona." }
+  ],
+
+  faq: {
+    titulo: "Las <em>dudas</em> de siempre",
+    items: [
+      { q: "¿Cómo me llega el acceso?",
+        a: "Tocás comprar, se abre el bot de Telegram y ahí se hace todo. En cuanto se confirma el pago, el bot entrega el acceso automáticamente." },
+      { q: "¿Tengo que pagar todos los meses?",
+        a: "En CP VIP no: es un pago único con acceso de por vida. No hay mensualidad ni renovación." },
+      { q: "¿Y si el grupo de Telegram se cae?",
+        a: "El material de CP VIP está alojado fuera de Telegram. Por eso el acceso sobrevive aunque el grupo desaparezca." },
+      { q: "¿Qué pasa si algo no funciona?",
+        a: "Hay reposición sin costo. Escribís al bot y se resuelve por ahí mismo." },
+      { q: "¿Dónde se paga?",
+        a: "Dentro de Telegram, en el mismo bot. No salís de la app y no cargás datos en ninguna web." }
+    ]
+  },
+
+  /* ---------------- MEDICIÓN ----------------
+     Sin esto no hay forma de saber si la web vende. Mide dos cosas:
+     cuánta gente llega y cuánta toca "Comprar por Telegram".
+
+     goatcounter: tu código de cuenta (gratis, sin cookies, ~3 KB).
+       Se crea en goatcounter.com; si tu código es "tonyshop", aquí va
+       "tonyshop". Vacío = no se envía nada a ningún sitio.
+
+     marcarBoton: añade ?start=web_<sitio> a los enlaces del bot para
+       saber qué botón trajo a cada persona. OJO: sólo funciona si tu
+       bot acepta "/start algo". Si tu bot compara el mensaje con
+       "/start" exacto, dejará de responder. Compruébalo antes de
+       ponerlo en true. */
+  analitica: {
+    goatcounter: "tonyshop",
+    /* Sólo se marcan los bots de esta lista, y sólo los que se hayan
+       probado a mano escribiéndoles "/start prueba" y comprobando que
+       siguen respondiendo. Un bot que compare el mensaje con "/start"
+       exacto deja de contestar con un parámetro detrás, y eso no mide
+       ventas: las mata.
+
+       TonyShoppbot      probado el 2026-08-20, responde normal.
+       TonyExclusivobot  puesto el 2026-08-25. OJO con el nombre: son DOS
+                         bots distintos y se parecen mucho.
+                           tonyexclusivebot  -> "TonyExclusive"  (con E)
+                           TonyExclusivobot  -> "TonyExclusivo"  (con O)
+                         Hasta hoy estos 4 botones apuntaban al de la E,
+                         que es el equivocado. El bueno es el de la O.
+                         No fiarse del código HTTP para distinguirlos:
+                         t.me responde 200 aunque el usuario no exista.
+                         Se comprueba mirando el título de la página.
+
+                         Su código (caro-bot) sí lee context.args y lo
+                         guarda, así que admite la marca de seguimiento.
+                         Aun así se deja fuera de botsProbados hasta
+                         verlo contestar a mano en Telegram.
+
+       OJO: para que esto sirva de algo, el bot tiene que GUARDAR el
+       texto que llega después de /start. Si no lo guarda, los enlaces
+       llevan la marca pero nadie la anota. */
+    marcarBoton: true,
+    botsProbados: ["TonyShoppbot"]
+  },
+
+  /* Sello de cada línea. Cambiar el archivo cambia el símbolo. */
+  sellos: {
+    "catalogo-mx": "img/marca/sim-pin.png",
+    "blackhub":    "img/marca/sim-ojo.png",
+    "CP": "img/marca/sim-llave.png",
+    "elopicante":  "img/marca/sim-micro.png"
+  },
+
+  muestra: {
+    titulo: "Mirás antes de <em>pagar</em>.",
+    sub: "Las muestras están abiertas en el catálogo. No hay registro, no hay correo, no hay formulario."
+  },
+
+  /* Puerta de edad. Se muestra una vez y queda guardada en el
+     navegador. Añade fricción a propósito: es un sitio +18 y las
+     pasarelas de pago lo miran. */
+  puerta: {
+    /* DESACTIVADA TEMPORALMENTE a peticion tuya (2026-08-20) para
+       poder probar cosas sin la pantalla de por medio.
+       Para volver a encenderla: poner activa: true. Nada mas. */
+    activa: false,
+    titulo: "Contenido para mayores de 18",
+    texto: "Este sitio contiene material explícito. Al entrar confirmás que tenés 18 años o más.",
+    si: "Tengo 18 o más — entrar",
+    no: "Salir",
+    legal: "Al continuar aceptás ver contenido para adultos. Si sos menor de edad, salí de este sitio."
+  },
+
+  cierre: {
+    titulo: "No hay nada que llenar.<br>Sólo <em>entrar</em>.",
+    sub: "Abrís el bot, elegís y ya está adentro."
+  },
+
+  pie: "Compra segura vía Telegram"
+};
+
+/* ============================================================
+   IDIOMA — español por defecto, inglés a un toque.
+
+   El español es la fuente de verdad: se escribe una sola vez, en
+   CONFIG y en SECTIONS. El inglés es este diccionario. Si a una
+   frase le falta traducción, sale en español en vez de romperse,
+   así que se puede ir completando poco a poco.
+
+   Para añadir o corregir una traducción: busca la frase en español
+   y edita su línea. Nada más.
+   ============================================================ */
+const TRAD = {
+  /* --- botones --- */
+  "Comprar por Telegram": "Buy on Telegram",
+  "Ver el catálogo": "See the catalog",
+  "Entrar al canal": "Join the channel",
+  "Comprar": "Buy",
+  "Pagar con tarjeta": "Pay by card",
+
+  /* --- hero --- */
+  "Muestras abiertas · Entrega automática": "Open samples · Automatic delivery",
+  "Filtradas MX.<br>BlackHub.<br><em>Un pago.</em>": "MX Leaks.<br>BlackHub.<br><em>One payment.</em>",
+  "Packs de los 32 estados, colegialas, voyeur, hardcore y más. Mirás la muestra sin registro. Pagás en Telegram y el bot te da el acceso al instante.":
+    "Packs from all 32 states, schoolgirls, voyeur, hardcore and more. Preview the sample with no sign-up. Pay on Telegram and the bot gives you access instantly.",
+  "accesos": "items", "líneas": "lines", "fotos": "photos", "videos": "videos",
+  "fotos de muestra": "sample photos", "videos de muestra": "sample videos",
+  "Accesos": "Items", "Líneas": "Lines",
+  "Fotos de muestra": "Sample photos", "Videos de muestra": "Sample videos",
+
+  /* --- muestra --- */
+  "01 — La muestra": "01 — The sample",
+  "Mirás antes de <em>pagar</em>.": "You look before you <em>pay</em>.",
+  "Las muestras están abiertas en el catálogo. No hay registro, no hay correo, no hay formulario.":
+    "Samples are open in the catalog. No sign-up, no email, no forms.",
+
+  /* --- líneas --- */
+  "02 — Líneas": "02 — Lines",
+  "Elegí tu <em>línea</em>.": "Pick your <em>line</em>.",
+
+  /* --- descripciones de ficha --- */
+  "Packs filtrados de todo México — los 32 estados, verificadas con su red social (FB/IG). Un pago, acceso permanente, entrega automática al confirmar.":
+    "Leaked packs from all of Mexico — all 32 states, verified against their social media (FB/IG). One payment, permanent access, automatic delivery on confirmation.",
+  "Castings reales, con y sin ropa. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.":
+    "Real castings, clothed and not. One of the categories inside BlackHub: real content, no acting, updated often. One payment, permanent access.",
+  "Grabadas dormidas, sin que se enteren. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.":
+    "Filmed asleep, without noticing. One of the categories inside BlackHub: real content, no acting, updated often. One payment, permanent access.",
+  "Prostitutas grabadas por sus propios clientes. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.":
+    "Prostitutes filmed by their own clients. One of the categories inside BlackHub: real content, no acting, updated often. One payment, permanent access.",
+  "Capturas de OmeTV y Omegle. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.":
+    "Captures from OmeTV and Omegle. One of the categories inside BlackHub: real content, no acting, updated often. One payment, permanent access.",
+  "Cada línea es un tipo de acceso distinto. Tocá una para ver todo lo que tiene adentro.":
+    "Each line is a different kind of access. Tap one to see everything inside.",
+
+  /* --- catálogo --- */
+  "03 — Catálogo": "03 — Catalog",
+  "Todo lo que hay <em>hoy</em>": "Everything available <em>today</em>",
+  "Tocá cualquier portada para ver la muestra completa antes de comprar.":
+    "Tap any cover to see the full sample before you buy.",
+  "Buscar plaza o nombre…": "Search by name or state…",
+  "Guardados": "Saved",
+  "Nada con ese nombre": "Nothing by that name",
+  "Probá con otra plaza.": "Try another search.",
+  "acceso": "item", "producto": "item", "productos": "items",
+
+  /* --- beneficios --- */
+  "Acceso inmediato": "Instant access",
+  "El bot entrega apenas se confirma el pago. No hay cola ni horario.":
+    "The bot delivers as soon as payment clears. No queue, no opening hours.",
+  "Reposición incluida": "Replacement included",
+  "Si un acceso deja de funcionar, se repone sin costo.":
+    "If an access stops working, it gets replaced at no cost.",
+  "Fuera de Telegram": "Outside Telegram",
+  "CP VIP vive fuera del grupo: si el grupo cae, tu acceso sigue vivo.":
+    "CP VIP lives outside the group: if the group goes down, your access stays alive.",
+  "Soporte directo": "Direct support",
+  "Escribís al mismo bot y te contesta una persona.":
+    "Message the same bot and a real person answers.",
+
+  /* --- faq --- */
+  "04 — Antes de comprar": "04 — Before you buy",
+  "Las <em>dudas</em> de siempre": "The usual <em>questions</em>",
+  "¿Cómo me llega el acceso?": "How do I get access?",
+  "Tocás comprar, se abre el bot de Telegram y ahí se hace todo. En cuanto se confirma el pago, el bot entrega el acceso automáticamente.":
+    "You tap buy, the Telegram bot opens and everything happens there. As soon as payment clears, the bot delivers access automatically.",
+  "¿Tengo que pagar todos los meses?": "Do I have to pay every month?",
+  "En CP VIP no: es un pago único con acceso de por vida. No hay mensualidad ni renovación.":
+    "Not with CP VIP: one payment, lifetime access. No monthly fee, no renewal.",
+  "¿Y si el grupo de Telegram se cae?": "What if the Telegram group goes down?",
+  "El material de CP VIP está alojado fuera de Telegram. Por eso el acceso sobrevive aunque el grupo desaparezca.":
+    "CP VIP material is hosted outside Telegram. That is why your access survives even if the group disappears.",
+  "¿Qué pasa si algo no funciona?": "What if something stops working?",
+  "Hay reposición sin costo. Escribís al bot y se resuelve por ahí mismo.":
+    "Replacement is free. Message the bot and it gets sorted right there.",
+  "¿Dónde se paga?": "Where do I pay?",
+  "Dentro de Telegram, en el mismo bot. No salís de la app y no cargás datos en ninguna web.":
+    "Inside Telegram, in the same bot. You never leave the app and never enter details on a website.",
+
+  /* --- cierre y pie --- */
+  "No hay nada que llenar.<br>Sólo <em>entrar</em>.": "Nothing to fill in.<br>Just <em>come in</em>.",
+  "Abrís el bot, elegís y ya está adentro.": "Open the bot, pick, and you are in.",
+  "Compra segura vía Telegram": "Secure checkout via Telegram",
+  "Canal oficial": "Official channel",
+
+  /* --- puerta de edad --- */
+  "Contenido para mayores de 18": "18+ content",
+  "Este sitio contiene material explícito. Al entrar confirmás que tenés 18 años o más.":
+    "This site contains explicit material. By entering you confirm you are 18 or older.",
+  "Tengo 18 o más — entrar": "I am 18 or older — enter",
+  "Salir": "Leave",
+  "Al continuar aceptás ver contenido para adultos. Si sos menor de edad, salí de este sitio.":
+    "By continuing you agree to view adult content. If you are under 18, leave this site.",
+
+  /* --- líneas del catálogo --- *
+     Los nombres de marca no se traducen (Blackhub, CP VIP,
+     Elopicante) ni los de persona ni las plazas mexicanas. */
+  "Packs filtrados de los 32 estados de la República Mexicana":
+    "Leaked packs from all 32 states of Mexico",
+  "Contenido exclusivo alojado fuera de Telegram • Acceso de por vida • Un solo pago":
+    "Exclusive content hosted outside Telegram • Lifetime access • One single payment",
+  "Contenido exclusivo alojado fuera de Telegram. Un solo pago, acceso de por vida, sin mensualidades. El material no vive en el grupo: si el grupo se cae, tu acceso sigue.":
+    "Exclusive content hosted outside Telegram. One payment, lifetime access, no subscriptions. The material doesn't live in the group: if the group goes down, your access stays.",
+  "Todos los videos del podcast #1 +18": "Every video from the #1 adult podcast",
+  "Castings +18/-18": "Castings 18+/under-18",
+  "Dormidas": "Sleeping",
+  "Prostitutas": "Sex workers",
+
+  /* --- características de producto --- */
+  "Entrega inmediata": "Instant delivery",
+  "Soporte por Telegram": "Support on Telegram",
+  "Alojado fuera de Telegram": "Hosted outside Telegram",
+  "Garantía de por vida": "Lifetime guarantee",
+  "Pago único, sin mensualidades": "One payment, no subscription",
+  "Entrega automática e inmediata": "Automatic, instant delivery",
+  "Garantía de reposición": "Replacement guarantee",
+  "Soporte 24/7 por Telegram": "24/7 support on Telegram",
+  "Activación al momento": "Activated on the spot",
+  "Pago seguro dentro del bot": "Secure payment inside the bot",
+  "Calidad garantizada": "Guaranteed quality",
+  "Reposición sin costo": "Free replacement",
+  "Atención prioritaria": "Priority support",
+
+  /* --- cabecera / SEO --- */
+  "TonyShop — Acceso inmediato por Telegram": "TonyShop — Instant access on Telegram",
+  "Elige, paga en Telegram y el bot te da el acceso al momento. 16 accesos en 4 líneas. Sin esperas, sin mensualidades en CP VIP.":
+    "Pick, pay on Telegram and the bot gives you access instantly. 16 items across 4 lines. No waiting, no subscription on CP VIP."
+};
+
+/* Idioma elegido: lo guardado, si no el del navegador, si no español. */
+let IDIOMA = "es";
+try {
+  const g = localStorage.getItem("tonyshop:idioma");
+  IDIOMA = g || ((navigator.language || "es").toLowerCase().startsWith("en") ? "en" : "es");
+} catch (e) {}
+
+/* Traduce. Si falta la frase, devuelve el español: nunca queda hueco. */
+const tr = (t) => (IDIOMA === "en" && TRAD[t]) ? TRAD[t] : t;
+
+/* ============================================================
+   DATOS — nombres, plazas, links y media.
+   Ojo: en GitHub Pages las mayúsculas importan (.mp4 ≠ .MP4).
+   ============================================================ */
+
+/* TODO en minúscula (.jpg / .mp4).
+
+   Ojo con esto, que ya me confundió una vez: en el disco de la Mac
+   algunos videos se ven como .MP4, pero el repositorio los tiene en
+   minúscula y GitHub Pages sirve lo del repositorio. macOS no distingue
+   mayúsculas, así que git nunca registró el cambio de caja.
+
+   La fuente de verdad NO es `ls` en la Mac: es `git ls-tree HEAD` o
+   pedirle el archivo al sitio publicado. Comprobado el 2026-08-20:
+   https://packsmx.com/img/p9/video1.mp4 -> 200
+   https://packsmx.com/img/p9/video1.MP4 -> 404 */
+const media = (p, nFotos, nVideos) => [
+  ...Array.from({length:nFotos},  (_, i) => ({tipo:"imagen", src:`img/${p}/foto${i+1}.jpg`})),
+  ...Array.from({length:nVideos}, (_, i) => ({tipo:"video",
+    src:`img/${p}/video${i+1}.mp4`,
+    /* Portada extraída del propio video (img/posters/). Sin ella el
+       navegador tiene que descargar el video para pintar un fotograma,
+       y eso costaba 8 MB en la primera pantalla. */
+    poster:`img/posters/${p}-video${i+1}.jpg`}))
+];
+
+const F_INMEDIATA = ["Entrega inmediata", "Soporte por Telegram"];
+
+/* MX es UN acceso: se compra una vez y entran los 32 estados. Las 4
+   fichas son muestras del mismo acceso, así que comparten descripción y
+   se diferencian sólo por el nombre y el estado del chip. */
+const D_MX = "Packs filtrados de todo México — los 32 estados, verificadas con su red social (FB/IG). Un pago, acceso permanente, entrega automática al confirmar.";
+const C_MX = ["Los 32 estados incluidos", "Verificadas con su red social", "Entrega automática e inmediata"];
+
+/* TonyExclusive: el argumento de venta no es la cantidad sino que el
+   material vive fuera de Telegram, asi que el acceso sobrevive a que se
+   caiga el grupo. Por eso encabeza la lista. */
+const F_EXCLUSIVE = ["Alojado fuera de Telegram", "Garantía de por vida", "Pago único, sin mensualidades"];
+
+const SECTIONS = [
+  {
+    id: "catalogo-mx", titulo: "MX Filtradas", bot: "MX", pago: "MX",
+    kicker: "Packs filtrados de los 32 estados de la República Mexicana",
+    productos: [
+      { nombre: "Alessa", precio: "DURANGO", linkBot: "",
+        descripcion: D_MX, caracteristicas: C_MX,
+        media: media("p1", 9, 0) },
+      { nombre: "Michel Talavera", precio: "BAJA CALIFORNIA", linkBot: "",
+        descripcion: D_MX, caracteristicas: C_MX,
+        media: media("p2", 1, 4) },
+      { nombre: "Alondra Lamas", precio: "TAMPICO", linkBot: "",
+        descripcion: D_MX, caracteristicas: C_MX,
+        media: media("p3", 10, 0) },
+      { nombre: "Michelle Espinoza", precio: "CHIHUAHUA", linkBot: "",
+        descripcion: D_MX, caracteristicas: C_MX,
+        media: media("p4", 5, 5) }
+    ]
+  },
+  {
+    id: "blackhub", titulo: "Blackhub", bot: "blackhub", pago: "blackhub",
+    kicker: "Colegialas • Voyeur • Cámaras • Espiadas • Dormidas • Teens • Descuidos • Baños • Hardcore • Omegle • OmeTV • Vestidores • Castings 🇲🇽🇵🇪🇧🇴🇻🇪🇦🇷🇧🇷 • Hoteles • Caseras • Castings -18 • Discord e-sex lives • Telegram lives • Sexmex • Brazzers",
+    productos: [
+      { nombre: "Castings +18/-18", precio: "", linkBot: "",
+        descripcion: "Castings reales, con y sin ropa. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.",
+        caracteristicas: ["Sin actuación", "Se actualiza seguido", "Entrega automática"],
+        media: media("p5", 0, 4) },
+      { nombre: "Dormidas", precio: "", linkBot: "",
+        descripcion: "Grabadas dormidas, sin que se enteren. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.",
+        caracteristicas: ["Sin actuación", "Se actualiza seguido", "Entrega automática"],
+        media: media("p6", 0, 4) },
+      { nombre: "Prostitutas", precio: "", linkBot: "",
+        descripcion: "Prostitutas grabadas por sus propios clientes. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.",
+        caracteristicas: ["Sin actuación", "Se actualiza seguido", "Entrega automática"],
+        media: media("p7", 0, 3) },
+      { nombre: "OmeTV", precio: "", linkBot: "",
+        descripcion: "Capturas de OmeTV y Omegle. Es una de las categorías dentro de BlackHub: contenido real, sin actuación, que se actualiza seguido. Un pago, acceso permanente.",
+        caracteristicas: ["Sin actuación", "Se actualiza seguido", "Entrega automática"],
+        media: media("p8", 0, 4) }
+    ]
+  },
+  {
+    id: "CPVIP", titulo: "CP VIP", pago: "caro",
+    kicker: "Contenido exclusivo alojado fuera de Telegram • Acceso de por vida • Un solo pago",
+    productos: [
+      { nombre: "", precio: "", linkBot: "https://t.me/TonyExclusivobot",
+        descripcion: "Contenido exclusivo alojado fuera de Telegram. Un solo pago, acceso de por vida, sin mensualidades. El material no vive en el grupo: si el grupo se cae, tu acceso sigue.",
+        caracteristicas: F_EXCLUSIVE, media: media("p13", 0, 1) },
+      { nombre: "", precio: "", linkBot: "https://t.me/TonyExclusivobot",
+        descripcion: "Contenido exclusivo alojado fuera de Telegram. Un solo pago, acceso de por vida, sin mensualidades. El material no vive en el grupo: si el grupo se cae, tu acceso sigue.",
+        caracteristicas: F_EXCLUSIVE, media: media("p14", 0, 1) },
+      { nombre: "", precio: "", linkBot: "https://t.me/TonyExclusivobot",
+        descripcion: "Contenido exclusivo alojado fuera de Telegram. Un solo pago, acceso de por vida, sin mensualidades. El material no vive en el grupo: si el grupo se cae, tu acceso sigue.",
+        caracteristicas: F_EXCLUSIVE, media: media("p15", 0, 1) },
+      { nombre: "", precio: "", linkBot: "https://t.me/TonyExclusivobot",
+        descripcion: "Contenido exclusivo alojado fuera de Telegram. Un solo pago, acceso de por vida, sin mensualidades. El material no vive en el grupo: si el grupo se cae, tu acceso sigue.",
+        caracteristicas: F_EXCLUSIVE, media: media("p16", 0, 1) }
+    ]
+  }
+];
+
+/* ---------- helpers ---------- */
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const linkBase = (p) => (p.linkBot && p.linkBot.trim()) ? p.linkBot : CONFIG.botTelegram;
+/* ?start=web_<sitio> sólo si está activado en CONFIG. Ver el aviso allí. */
+/* De dónde llegó el visitante a ESTA página, no a qué botón le dio.
+   Por defecto "web" (X, buscadores, directo). Si la URL trae ?src=algo,
+   ese algo reemplaza al prefijo y los enlaces al bot salen etiquetados
+   distinto: ?src=canal produce start=canal_ficha_MX en vez de
+   web_ficha_MX.
+
+   Existe porque el tráfico que mandamos desde los canales de Telegram
+   caía en las mismas etiquetas web_* que el de X y no había forma de
+   separarlos. Se filtra a [a-z0-9_] y 20 caracteres: el payload de
+   /start de Telegram no admite cualquier cosa, y un src inventado por un
+   tercero no debe poder ensuciar la medición. */
+const SRC = (() => {
+  const v = new URLSearchParams(location.search).get("src") || "";
+  return /^[a-z0-9_]{1,20}$/i.test(v) ? v.toLowerCase() : "web";
+})();
+
+const conOrigen = (url, origen) => {
+  const a = CONFIG.analitica;
+  if (!a || !a.marcarBoton || !origen) return url;
+  /* Sólo bots de la lista de probados. Uno sin probar se deja intacto:
+     vale más perder la atribución de esa línea que arriesgar que el bot
+     deje de responder. */
+  const quien = (url.match(/t\.me\/([A-Za-z0-9_]+)/) || [])[1];
+  const ok = (a.botsProbados || []).some((b) => b.toLowerCase() === String(quien).toLowerCase());
+  if (!ok) return url;
+  return url + (url.indexOf("?") < 0 ? "?" : "&") + "start=" + SRC + "_" + origen;
+};
+/* origen = de qué botón salió (ficha/visor/hero…). bot = a qué producto
+   del bot principal rutear directo (?start=web_<origen>_<bot>), para que
+   el clic caiga en la ficha de ese producto y no en el catálogo general.
+   Sin bot (TonyExclusive, botones genéricos) queda como antes. */
+const linkDe = (p, origen, bot) => conOrigen(linkBase(p), bot ? origen + "_" + bot : origen);
+const menosMov = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const ahorroDatos = !!(navigator.connection && navigator.connection.saveData);
+
+/* Red de seguridad de mayúsculas: si un archivo da 404 se reintenta
+   una vez con la extensión en el otro caso. No reemplaza revisar el
+   nombre; evita que la página quede en blanco. */
+document.addEventListener("error", (e) => {
+  const el = e.target;
+  if (!el || (el.tagName !== "IMG" && el.tagName !== "VIDEO")) return;
+  if (el.dataset.reintento) return;
+  const s = el.getAttribute("src") || "";
+  const corte = s.indexOf("#");
+  const base = corte < 0 ? s : s.slice(0, corte);
+  const cola = corte < 0 ? "" : s.slice(corte);
+  const m = base.match(/\.([A-Za-z0-9]+)$/);
+  if (!m) return;
+  const ext = m[1];
+  const otro = ext === ext.toLowerCase() ? ext.toUpperCase() : ext.toLowerCase();
+  if (otro === ext) return;
+  el.dataset.reintento = "1";
+  el.src = base.slice(0, -ext.length) + otro + cola;
+}, true);
+
+/* Lista plana: el visor se abre por índice global. */
+const FLAT = [];
+SECTIONS.forEach((s, si) => s.productos.forEach((p) => FLAT.push({p, si})));
+
+/* Los únicos números de la página. Se cuentan, no se declaran. */
+const STATS = FLAT.reduce((a, {p}) => {
+  p.media.forEach((m) => m.tipo === "imagen" ? a.fotos++ : a.videos++);
+  return a;
+}, {fotos: 0, videos: 0});
+STATS.productos = FLAT.length;
+STATS.lineas = SECTIONS.length;
+
+const TG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>';
+const MARCA = '<svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
+/* Tarjeta: el segundo camino de compra, el que no pasa por Telegram. */
+const TARJETA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>';
+
+/* ---------- medición ---------- *
+   Un solo punto de salida. Si no hay proveedor configurado no viaja
+   nada; el evento igual se emite en la página por si querés
+   engancharle otra cosa después sin tocar este archivo. */
+let gcCargado = false;
+function medir(evento, detalle) {
+  try {
+    dispatchEvent(new CustomEvent("tonyshop:medir", {detail: {evento, detalle}}));
+    const cod = CONFIG.analitica && CONFIG.analitica.goatcounter;
+    if (!cod) return;
+    if (!gcCargado) {
+      gcCargado = true;
+      window.goatcounter = {no_onload: true};
+      const sc = document.createElement("script");
+      sc.async = true;
+      sc.dataset.goatcounter = `https://${cod}.goatcounter.com/count`;
+      sc.src = "https://gc.zgo.at/count.js";
+      document.head.appendChild(sc);
+      /* la visita se cuenta en cuanto carga el contador */
+      sc.addEventListener("load", () => {
+        if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path: location.pathname});
+      });
+    }
+    const enviar = () => {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({path: detalle ? `${evento}/${detalle}` : evento, title: evento, event: true});
+      }
+    };
+    window.goatcounter && window.goatcounter.count ? enviar() : setTimeout(enviar, 1200);
+  } catch (e) {}
+}
+
+const nombreDe = (p, si) => p.nombre || SECTIONS[si].titulo;
+function etiquetaMedia(m) {
+  const i = m.filter((x) => x.tipo === "imagen").length, v = m.length - i, t = [];
+  if (i) t.push(i + " " + tr(i === 1 ? "foto" : "fotos"));
+  if (v) t.push(v + " " + tr(v === 1 ? "video" : "videos"));
+  return t.join(" · ");
+}
+/* Portada: primera foto; si es sólo video, el primer video con #t=0.1
+   para que el navegador pinte un fotograma sin descargarlo entero. */
+function portada(p, alt) {
+  const foto = p.media.find((m) => m.tipo === "imagen");
+  if (foto) return `<img src="${esc(foto.src)}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+  const v = p.media[0];
+  if (!v) return "";
+  /* El fotograma lo pone el poster, no el video: preload="none" y sin
+     fragmento #t, así el archivo no se toca hasta que se reproduce. */
+  return `<video src="${esc(v.src)}" poster="${esc(v.poster || "")}" muted loop playsinline
+    preload="none" tabindex="-1" aria-label="${esc(alt)}"></video>`;
+}
+
+/* ---------- guardados ---------- *
+   Marcador real en localStorage. Los únicos números de la página son
+   los que se pueden contar: fotos, videos, productos, guardados. */
+const GKEY = "tonyshop:guardados";
+let GUARDADOS = new Set();
+try { GUARDADOS = new Set(JSON.parse(localStorage.getItem(GKEY) || "[]")); } catch (e) {}
+let soloGuardados = false;
+const claveDe = (i) => {
+  const {p, si} = FLAT[i];
+  return SECTIONS[si].id + ":" + (p.media[0] ? p.media[0].src : i);
+};
+function alternarGuardado(i, btn) {
+  const k = claveDe(i);
+  GUARDADOS.has(k) ? GUARDADOS.delete(k) : GUARDADOS.add(k);
+  try { localStorage.setItem(GKEY, JSON.stringify([...GUARDADOS])); } catch (e) {}
+  btn.classList.toggle("on", GUARDADOS.has(k));
+  btn.setAttribute("aria-pressed", GUARDADOS.has(k));
+  btn.classList.remove("late"); void btn.offsetWidth; btn.classList.add("late");
+  pintarGuardados();
+  medir("guardar", GUARDADOS.has(k) ? "on" : "off");
+  if (soloGuardados) render();
+}
+function pintarGuardados() {
+  $("#nGuardados").textContent = GUARDADOS.size ? " " + GUARDADOS.size : "";
+  $("#chipGuardados").hidden = GUARDADOS.size === 0 && !soloGuardados;
+}
+
+/* ---------- catálogo editorial ---------- *
+   El primero de cada línea sale al doble de tamaño: rompe la
+   cuadrícula uniforme y da un punto de entrada por sección. */
+function render() {
+  const q = $("#q").value.trim().toLowerCase();
+  const coincide = (p, si) =>
+    !q || (p.nombre + " " + p.precio + " " + SECTIONS[si].titulo).toLowerCase().includes(q);
+
+  let total = 0;
+  const html = SECTIONS.map((s, si) => {
+    const filas = FLAT.map((e, i) => ({...e, i}))
+      .filter((e) => e.si === si && coincide(e.p, si) && (!soloGuardados || GUARDADOS.has(claveDe(e.i))));
+    if (!filas.length) return "";
+    total += filas.length;
+
+    const fichas = filas.map(({p, i}, k) => {
+      const nom = nombreDe(p, si);
+      const vids = p.media.filter((m) => m.tipo === "video").length;
+      const guardado = GUARDADOS.has(claveDe(i));
+      return `
+      <article class="ficha rv${k === 0 ? " destacada" : ""}" style="transition-delay:${Math.min(k, 5) * 60}ms">
+        <div class="lienzo" data-abrir="${i}" role="button" tabindex="0" aria-label="Ver muestra de ${esc(nom)}">
+          <div class="hueco"><span>muestra</span></div>
+          ${portada(p, nom)}
+          <div class="lienzo-velo"></div>
+          ${vids ? '<span class="reproduce" aria-hidden="true">▶</span>' : ""}
+          ${vids ? '<span class="barra" aria-hidden="true"><i></i></span>' : ""}
+          <span class="cuenta">${esc(etiquetaMedia(p.media))}</span>
+        </div>
+        <button class="marcador${guardado ? " on" : ""}" data-guardar="${i}" type="button"
+                aria-pressed="${guardado}" aria-label="Guardar ${esc(nom)}">${MARCA}</button>
+        <div class="ficha-pie">
+          <span class="ficha-cat">${esc(tr(s.titulo))}</span>
+          <h4 class="ficha-nom">${esc(tr(nom))}</h4>
+          ${p.precio ? `<span class="plaza"><i></i><b>${esc(p.precio)}</b></span>` : ""}
+          <span class="gana"><i>✓</i><span>${esc(tr(p.caracteristicas[0]))}</span></span>
+          ${p.descripcion ? `<p class="ficha-desc">${p.precio ? `<b>${esc(p.precio.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase()))}.</b> ` : ""}${esc(tr(p.descripcion))}</p>` : ""}
+          <a class="btn btn-1 btn-sm" href="${esc(linkDe(p, "ficha", s.bot))}" data-cta="ficha" target="_blank" rel="noopener">
+            ${TG}<span>${esc(tr(CONFIG.cta.comprar))}</span>
+          </a>
+          ${s.pago ? `<a class="btn btn-2 btn-sm" href="${esc(CONFIG.workerPago)}?producto=${esc(s.pago)}" data-cta="tarjeta" target="_blank" rel="noopener">
+            ${TARJETA}<span>${esc(tr(CONFIG.cta.tarjeta))}</span>
+          </a>` : ""}
+        </div>
+      </article>`;
+    }).join("");
+
+    return `
+      <div class="linea-sec rv">
+        <h3 id="linea-${esc(s.id)}">${esc(tr(s.titulo))}</h3>
+        <span class="rayita"></span>
+        <span class="cnt">${filas.length} ${tr(filas.length === 1 ? "acceso" : "accesos")}</span>
+      </div>
+      <p class="linea-desc rv">${esc(tr(s.kicker))}</p>
+      <div class="rej">${fichas}</div>`;
+  }).join("");
+
+  $("#listado").innerHTML = html;
+  $("#vacio").hidden = total > 0;
+  $("#cuentaTotal").textContent = total + " " + tr(total === 1 ? "acceso" : "accesos");
+  observar();
+}
+
+/* Las cifras suben hasta su valor real al entrar en pantalla. El
+   número final es el mismo que se cuenta de SECTIONS: la animación no
+   inventa nada, sólo lo pone en movimiento. */
+function contar(el) {
+  if (el.dataset.contando) return;
+  const fin = parseInt(el.textContent, 10);
+  if (!isFinite(fin) || menosMov) return;
+  el.dataset.contando = "1";
+  /* El texto sólo se toca dentro del primer frame. Si requestAnimationFrame
+     nunca llega a correr (pestaña en segundo plano), el número real se
+     queda escrito en vez de congelarse en 0. */
+  const dur = 900;
+  let t0 = null;
+  const paso = (t) => {
+    if (t0 === null) t0 = t;
+    const k = Math.min(1, (t - t0) / dur);
+    el.textContent = Math.round(fin * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(paso);
+  };
+  requestAnimationFrame(paso);
+}
+
+/* ---------- observadores ---------- */
+const obsRv = new IntersectionObserver((es) => {
+  es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("on");
+    e.target.querySelectorAll("[data-contar]").forEach(contar);
+    obsRv.unobserve(e.target);
+  });
+}, {rootMargin: "0px 0px -6% 0px", threshold: .06});
+
+/* Sólo se reproduce lo que está de verdad a la vista. Con 32 videos
+   sueltos, dejarlos todos corriendo arrastra cualquier teléfono; y
+   con ahorro de datos activado no se reproduce ninguno. */
+/* Sólo se reproduce UNA portada: la más visible. Antes corría todo lo
+   que cruzara el 55% y, en una pantalla ancha, eran tres o cuatro
+   videos bajando datos a la vez. */
+const vistos = new Map();
+const obsVid = new IntersectionObserver((es) => {
+  es.forEach((e) => {
+    if (e.isIntersecting) vistos.set(e.target, e.intersectionRatio);
+    else vistos.delete(e.target);
+  });
+  let mejor = null, top = 0;
+  vistos.forEach((r, ficha) => { if (r > top) { top = r; mejor = ficha; } });
+  $$(".ficha.viva").forEach((f) => {
+    if (f === mejor) return;
+    const v = f.querySelector("video"); if (v) v.pause();
+    f.classList.remove("viva");
+  });
+  if (mejor && top > .5) {
+    const v = mejor.querySelector("video");
+    if (v) {
+      v.muted = true;
+      if (v.preload === "none") v.preload = "metadata";
+      const pr = v.play(); if (pr && pr.catch) pr.catch(() => {});
+      mejor.classList.add("viva");
+    }
+  }
+}, {threshold: [0, .25, .5, .75, 1]});
+
+function observar() {
+  $$(".rv:not(.on)").forEach((el) => obsRv.observe(el));
+  $$(".ficha").forEach((el) => {
+    if (!el.querySelector("video")) return;
+    if (!menosMov && !ahorroDatos) obsVid.observe(el);
+  });
+  if (!menosMov && matchMedia("(hover:hover)").matches) {
+    $$(".lienzo").forEach(scrub);
+    $$(".btn-1").forEach(iman);
+  }
+}
+
+/* El eje X del cursor manda sobre el tiempo del video. Se pausa la
+   reproducción automática mientras se rebobina y se reanuda al salir. */
+function scrub(lienzo) {
+  if (lienzo.dataset.scrub) return;
+  const v = lienzo.querySelector("video");
+  if (!v) return;
+  lienzo.dataset.scrub = "1";
+  const barra = lienzo.querySelector(".barra i");
+  lienzo.addEventListener("pointermove", (e) => {
+    if (!isFinite(v.duration) || v.duration <= 0) return;
+    const r = lienzo.getBoundingClientRect();
+    const t = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+    if (!v.paused) v.pause();
+    v.currentTime = t * v.duration;
+    if (barra) barra.style.width = (t * 100) + "%";
+  });
+  lienzo.addEventListener("pointerleave", () => {
+    const pr = v.play(); if (pr && pr.catch) pr.catch(() => {});
+  });
+}
+
+/* Botón magnético: se desplaza unos píxeles hacia el cursor. Poco —
+   pasado de 6px deja de sentirse fino y empieza a molestar al hacer clic. */
+function iman(btn) {
+  if (btn.dataset.iman) return;
+  btn.dataset.iman = "1";
+  btn.addEventListener("pointermove", (e) => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width / 2) / r.width;
+    const y = (e.clientY - r.top - r.height / 2) / r.height;
+    btn.style.transform = `translate(${x * 9}px, ${y * 6}px)`;
+  });
+  btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
+}
+
+/* ---------- visor ---------- *
+   Barras de progreso arriba, zonas táctiles a los lados, la foto
+   avanza sola a los 4.5 s y el video manda su propia duración. Al
+   terminar un producto salta al siguiente: se sigue mirando sin
+   volver a la rejilla. */
+let vIdx = null, vPos = 0, vTimer = null, vSonido = false, vMorph = false;
+
+/* Abre el visor haciendo crecer la propia portada hasta pantalla
+   completa (View Transitions). Si el navegador no lo soporta, o hay
+   preferencia de menos movimiento, abre normal. */
+function abrirDesde(i, lienzo) {
+  const media = lienzo.querySelector("img,video");
+  if (menosMov || !document.startViewTransition || !media) { abrirVisor(i); return; }
+  media.style.viewTransitionName = "media-activa";
+  vMorph = true;
+  const t = document.startViewTransition(() => {
+    media.style.viewTransitionName = "";
+    abrirVisor(i);
+  });
+  const limpiar = () => {
+    vMorph = false;
+    media.style.viewTransitionName = "";
+    const m = $("#visorTela").querySelector(".visor-media");
+    if (m) m.style.viewTransitionName = "";
+  };
+  /* startViewTransition expone .ready ademas de .finished. Si la
+     transicion se aborta (pestaña oculta, dos clics seguidos) y nadie
+     escucha .ready, queda una promesa sin capturar y salta un error en
+     consola. Se silencia: abortar no es un fallo, sólo no hay morph. */
+  if (t.ready && t.ready.catch) t.ready.catch(() => {});
+  t.finished.then(limpiar, limpiar);
+}
+const DUR_FOTO = 4500;
+
+function abrirVisor(i) {
+  vIdx = i; vPos = 0;
+  $("#visor").hidden = false;
+  document.body.style.overflow = "hidden";
+  pintarVisor();
+}
+function cerrarVisor() {
+  vIdx = null; clearTimeout(vTimer);
+  $("#visor").hidden = true;
+  document.body.style.overflow = "";
+  const v = $("#visorTela").querySelector("video.visor-media");
+  if (v) v.pause();
+}
+function pasoVisor(d) {
+  if (vIdx === null) return;
+  const n = FLAT[vIdx].p.media.length;
+  const sig = vPos + d;
+  if (sig >= n) {
+    if (vIdx + 1 < FLAT.length) { vIdx++; vPos = 0; pintarVisor(); } else cerrarVisor();
+    return;
+  }
+  if (sig < 0) {
+    if (vIdx > 0) { vIdx--; vPos = Math.max(0, FLAT[vIdx].p.media.length - 1); pintarVisor(); }
+    return;
+  }
+  vPos = sig; pintarVisor();
+}
+
+function pintarVisor() {
+  if (vIdx === null) return;
+  clearTimeout(vTimer);
+  const {p, si} = FLAT[vIdx];
+  const cur = p.media[vPos];
+  const nom = nombreDe(p, si);
+
+  $("#visorSig").textContent = SECTIONS[si].titulo.charAt(0);
+  $("#visorNom").textContent = tr(nom);
+  $("#visorSub").textContent = `${tr(SECTIONS[si].titulo)} · ${vPos + 1}/${p.media.length}`;
+  $("#visorPieNom").textContent = tr(nom);
+  $("#visorPieSub").textContent = p.precio || etiquetaMedia(p.media);
+  $("#visorCta").href = linkDe(p, "visor", SECTIONS[si].bot);
+  $("#visorCta").dataset.cta = "visor";
+  $("#visorCta").innerHTML = TG + "<span>" + esc(p.precio ? p.precio + " · " + tr("Comprar") : tr(CONFIG.cta.comprar)) + "</span>";
+  $("#visorHueco").textContent = cur ? (cur.tipo === "video" ? "video" : "foto") : "";
+  $("#visorSon").hidden = !cur || cur.tipo !== "video";
+  $("#visorSon").textContent = vSonido ? "🔊" : "🔇";
+
+  $("#visorBarras").innerHTML = p.media
+    .map((m, k) => `<i class="${k < vPos ? "hecha" : k === vPos ? "activa" : ""}"><b></b></i>`).join("");
+  const activa = $("#visorBarras").querySelector(".activa");
+
+  $("#visorTela").querySelectorAll(".visor-media,.visor-fondo").forEach((n) => n.remove());
+  if (!cur) return;
+
+  /* fondo borroso del propio medio: rellena los costados sin barras
+     negras cuando el video es vertical y la caja no. */
+  const fondo = document.createElement(cur.tipo === "video" ? "video" : "img");
+  fondo.className = "visor-fondo";
+  fondo.src = cur.tipo === "video" ? (cur.poster || cur.src) : cur.src;
+  fondo.setAttribute("aria-hidden", "true");
+  if (cur.tipo === "video") { fondo.muted = true; fondo.playsInline = true; fondo.preload = "metadata"; }
+  $("#visorTela").insertBefore(fondo, $("#visorPrev"));
+
+  const el = document.createElement(cur.tipo === "video" ? "video" : "img");
+  el.className = "visor-media";
+  el.src = cur.src;
+  if (vMorph) el.style.viewTransitionName = "media-activa";
+  if (cur.tipo === "video") {
+    el.controls = true; el.playsInline = true; el.preload = "metadata";
+    el.muted = !vSonido; el.autoplay = true;
+    el.addEventListener("loadedmetadata", () => {
+      if (activa && isFinite(el.duration) && el.duration > 0) activa.style.setProperty("--dur", el.duration + "s");
+    });
+    el.addEventListener("ended", () => pasoVisor(1));
+    const pr = el.play(); if (pr && pr.catch) pr.catch(() => {});
+  } else {
+    el.alt = `Muestra de ${nom}`;
+    if (activa) activa.style.setProperty("--dur", DUR_FOTO + "ms");
+    if (!menosMov) vTimer = setTimeout(() => pasoVisor(1), DUR_FOTO);
+  }
+  $("#visorTela").insertBefore(el, $("#visorPrev"));
+}
+
+/* ============================================================
+   ARRANQUE
+   ============================================================ */
+const T = (id, v) => { const n = document.getElementById(id); if (n) n.innerHTML = v; };
+
+/* Todo lo que cambia con el idioma vive aquí dentro, para poder
+   volver a pintarlo sin recargar la página. */
+function pintarTextos() {
+  /* --- hero --- */
+  T("heroKicker", esc(tr(CONFIG.hero.kicker)));
+  T("heroTitulo", tr(CONFIG.hero.titulo));
+  T("heroSub", esc(tr(CONFIG.hero.sub)));
+  T("heroPie", [
+    [STATS.fotos, "fotos de muestra"], [STATS.videos, "videos de muestra"],
+    [STATS.productos, "accesos"]
+  ].map(([n, t]) => `<div><b data-contar>${n}</b><span>${tr(t)}</span></div>`).join(""));
+  /* el hero no espera al observer: está sobre la línea de flotación */
+  setTimeout(() => $$("#heroPie [data-contar]").forEach(contar), 380);
+
+  /* --- mosaico del hero: el material real, no un render --- *
+     Se repiten pocas fotos distintas a propósito: el navegador las
+     cachea y el hero pesa lo que pesan 6 imágenes, no 18. */
+
+  /* --- cinta de datos --- */
+  T("cintaIn", [
+    [STATS.productos, "Accesos"], [STATS.lineas, "Líneas"],
+    [STATS.fotos, "Fotos de muestra"], [STATS.videos, "Videos de muestra"]
+  ].map(([n, t]) => `<div class="cinta-it rv"><b data-contar>${n}</b><span>${tr(t)}</span></div>`).join(""));
+
+  /* --- líneas --- */
+  T("catsTitulo", tr(CONFIG.lineas.titulo));
+  T("catsSub", esc(tr(CONFIG.lineas.sub)));
+  T("cats", SECTIONS.map((s) => {
+    const p = s.productos[0];
+    const sello = CONFIG.sellos[s.id];
+    return `<a class="cat rv" href="#linea-${esc(s.id)}">
+      <span class="cat-med">${portada(p, s.titulo)}</span>
+      <span class="cat-velo"></span>
+      ${sello ? `<span class="cat-sello"><img src="${esc(sello)}" alt="" loading="lazy"></span>` : ""}
+      <span class="cat-n">${s.productos.length} ${tr(s.productos.length === 1 ? "acceso" : "accesos")}</span>
+      <span class="cat-txt"><h3>${esc(tr(s.titulo))}</h3><p>${esc(tr(s.kicker))}</p></span>
+    </a>`;
+  }).join(""));
+
+  /* --- catálogo --- */
+  T("catTitulo", tr(CONFIG.catalogo.titulo));
+  T("catSub", esc(tr(CONFIG.catalogo.sub)));
+
+  /* --- beneficios --- */
+  T("porqueRej", CONFIG.porque.map((b) =>
+    `<div class="porque-it rv"><span class="ico"><img src="${esc(b.ico)}" alt="" loading="lazy"></span><b>${esc(tr(b.t))}</b><p>${esc(tr(b.d))}</p></div>`
+  ).join(""));
+
+  /* --- faq --- */
+  T("faqTitulo", tr(CONFIG.faq.titulo));
+  T("faqLista", CONFIG.faq.items.map((f, i) => `
+    <div class="faq-it rv">
+      <button class="faq-q" type="button" data-faq="${i}" aria-expanded="false" aria-controls="faq-a-${i}">
+        <span>${esc(tr(f.q))}</span><span class="mas" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a" id="faq-a-${i}"><div><p>${esc(tr(f.a))}</p></div></div>
+    </div>`).join(""));
+
+  /* --- banda de muestra: tus fotos reales, censuradas --- *
+     Se duplica la lista para que el desfile sea continuo. Sólo se usan
+     fotos ya presentes en el catálogo, nada generado. */
+  T("muestraTitulo", tr(CONFIG.muestra.titulo));
+  T("muestraSub", esc(tr(CONFIG.muestra.sub)));
+  $("#ctaMuestra").textContent = tr(CONFIG.cta.catalogo);
+
+  /* --- cierre y pie --- */
+  T("cierreTitulo", tr(CONFIG.cierre.titulo));
+  T("cierreSub", esc(tr(CONFIG.cierre.sub)));
+  T("pie", `© ${new Date().getFullYear()} TonyShop — ${esc(tr(CONFIG.pie))} · <a href="${esc(CONFIG.hubTelegram)}" target="_blank" rel="noopener">${esc(tr("Canal oficial"))}</a>`);
+
+  /* --- navegación y CTAs --- */
+  T("navLinks", SECTIONS.map((s) => `<a href="#linea-${esc(s.id)}">${esc(tr(s.titulo))}</a>`).join(""));
+  [["ctaNav", "nav"], ["ctaHero1", "hero"], ["ctaFinal1", "cierre"], ["ctaMovil", "movil"]]
+    .forEach(([id, origen]) => {
+      const n = document.getElementById(id);
+      n.href = conOrigen(CONFIG.botTelegram, origen);
+      n.dataset.cta = origen;
+      n.innerHTML = TG + "<span>" + esc(tr(CONFIG.cta.comprar)) + "</span>";
+    });
+  $("#ctaHero2").textContent = tr(CONFIG.cta.catalogo);
+  $("#ctaFinal2").href = CONFIG.hubTelegram;
+  $("#ctaFinal2").dataset.cta = "canal";
+  $("#ctaFinal2").textContent = tr(CONFIG.cta.hub);
+
+}
+
+pintarTextos();
+
+/* Estos dos arman media a partir de SECTIONS: no dependen del
+   idioma, así que se ejecutan una sola vez. */
+(function mosaico() {
+  const fotos = FLAT.flatMap(({p}) => p.media.filter((m) => m.tipo === "imagen").map((m) => m.src));
+  if (!fotos.length) return;
+  const base = fotos.filter((_, i) => i % Math.max(1, Math.floor(fotos.length / 6)) === 0).slice(0, 6);
+  const tot = 18;
+  T("mosaico", Array.from({length: tot}, (_, i) =>
+    `<div class="${i % 2 ? "cl" : ""}"><img src="${esc(base[i % base.length])}" alt="" loading="${i < 6 ? "eager" : "lazy"}" decoding="async"></div>`
+  ).join(""));
+})();
+
+(function tira() {
+  /* Sólo fotos. Antes la tira metía también videos y, al duplicarse
+     para el desfile, sumaba doce <video> pidiendo metadatos en la
+     primera pantalla. Con 25 fotos sobra para llenar la banda. */
+  const lista = FLAT.flatMap(({p}) => p.media.filter((m) => m.tipo === "imagen").map((m) => m.src));
+  if (!lista.length) return;
+  const uno = (src) => `<span class="muestra-it"><img src="${esc(src)}" alt="" loading="lazy" decoding="async"></span>`;
+  T("muestraTira", lista.map(uno).join("") + lista.map(uno).join(""));
+})();
+/* --- puerta de edad --- */
+const PKEY = "tonyshop:edad";
+(function puerta() {
+  const el = $("#puerta");
+  let ok = false;
+  try { ok = localStorage.getItem(PKEY) === "1"; } catch (e) { ok = true; }
+  if (!CONFIG.puerta.activa || ok) { el.remove(); return; }
+  T("puertaTit", esc(tr(CONFIG.puerta.titulo)));
+  T("puertaTxt", esc(tr(CONFIG.puerta.texto)));
+  T("puertaLegal", esc(tr(CONFIG.puerta.legal)));
+  $("#puertaSi").textContent = tr(CONFIG.puerta.si);
+  $("#puertaNo").textContent = tr(CONFIG.puerta.no);
+  el.hidden = false;
+  document.body.style.overflow = "hidden";
+  $("#puertaSi").addEventListener("click", () => {
+    try { localStorage.setItem(PKEY, "1"); } catch (e) {}
+    el.remove();
+    document.body.style.overflow = "";
+  });
+})();
+
+pintarIdioma();
+$("#idioma").addEventListener("click", cambiarIdioma);
+
+pintarGuardados();
+render();
+observar();
+medir("visita");
+
+/* --- idioma --- *
+   Repinta lo que no se regenera solo. El catálogo, las líneas y el
+   visor ya salen traducidos porque pasan por tr() al pintarse; aquí
+   van los textos fijos del HTML y la cabecera. */
+function pintarIdioma() {
+  document.documentElement.lang = IDIOMA;
+  const fijos = {
+    numMuestra: "01 — La muestra", numLineas: "02 — Líneas",
+    numCatalogo: "03 — Catálogo", numFaq: "04 — Antes de comprar",
+    txtGuardados: "Guardados", vacioTit: "Nada con ese nombre",
+    vacioSub: "Probá con otra plaza."
+  };
+  Object.keys(fijos).forEach((id) => {
+    const n = document.getElementById(id);
+    if (n) n.textContent = tr(fijos[id]);
+  });
+  const q = $("#q");
+  if (q) q.placeholder = tr("Buscar plaza o nombre…");
+  document.title = tr("TonyShop — Acceso inmediato por Telegram");
+  const d = document.querySelector('meta[name="description"]');
+  if (d) d.content = tr("Elige, paga en Telegram y el bot te da el acceso al momento. 16 accesos en 4 líneas. Sin esperas, sin mensualidades en TonyExclusive.");
+  const b = $("#idioma");
+  /* Se muestra el idioma AL QUE SE VA, no en el que estás: un botón
+     que dice "EN" invita a tocarlo; uno que dice "ES" estando en
+     español no significa nada. */
+  if (b) b.innerHTML = IDIOMA === "es" ? '<b>EN</b> English' : '<b>ES</b> Español';
+}
+
+function cambiarIdioma() {
+  IDIOMA = IDIOMA === "es" ? "en" : "es";
+  try { localStorage.setItem("tonyshop:idioma", IDIOMA); } catch (e) {}
+  medir("idioma", IDIOMA);
+  pintarTextos();
+  pintarIdioma();
+  render();
+  observar();
+  $$(".rv").forEach((el) => el.classList.add("on"));
+}
+
+/* --- navbar: opaca al bajar, marca la línea visible --- */
+const alScroll = () => {
+  $("#nav").classList.toggle("pegado", scrollY > 10);
+  let act = "";
+  SECTIONS.forEach((s) => {
+    const el = document.getElementById("linea-" + s.id);
+    if (el && el.getBoundingClientRect().top <= 150) act = s.id;
+  });
+  $$("#navLinks a").forEach((a) => a.classList.toggle("act", a.getAttribute("href") === "#linea-" + act));
+};
+addEventListener("scroll", alScroll, {passive: true});
+alScroll();
+
+/* --- eventos --- */
+/* Un único oyente en todo el documento: no hace falta reenganchar
+   nada cuando el catálogo se vuelve a pintar. */
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-cta]");
+  if (b) medir("comprar", b.dataset.cta);
+});
+
+/* Profundidad de scroll: dice si la gente llega abajo o abandona. */
+(function profundidad() {
+  const hitos = [25, 50, 75, 90];
+  const vistos = new Set();
+  const mirar = () => {
+    const alto = document.documentElement.scrollHeight - innerHeight;
+    if (alto <= 0) return;
+    const pct = Math.round((scrollY / alto) * 100);
+    hitos.forEach((h) => {
+      if (pct >= h && !vistos.has(h)) { vistos.add(h); medir("scroll", h + "%"); }
+    });
+    if (vistos.size === hitos.length) removeEventListener("scroll", mirar);
+  };
+  addEventListener("scroll", mirar, {passive: true});
+})();
+
+$("#q").addEventListener("input", render);
+$("#chipGuardados").addEventListener("click", () => {
+  soloGuardados = !soloGuardados;
+  $("#chipGuardados").classList.toggle("on", soloGuardados);
+  pintarGuardados(); render();
+});
+$("#arriba").addEventListener("click", () => scrollTo({top: 0, behavior: menosMov ? "auto" : "smooth"}));
+
+$("#listado").addEventListener("click", (e) => {
+  const g = e.target.closest("[data-guardar]");
+  if (g) { alternarGuardado(Number(g.dataset.guardar), g); return; }
+  const a = e.target.closest("[data-abrir]");
+  if (a) { medir("ver_muestra"); abrirDesde(Number(a.dataset.abrir), a); }
+});
+$("#listado").addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const a = e.target.closest("[data-abrir]");
+  if (a) { e.preventDefault(); abrirDesde(Number(a.dataset.abrir), a); }
+});
+
+$("#faqLista").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-faq]");
+  if (!b) return;
+  const it = b.closest(".faq-it");
+  const abierta = it.classList.toggle("abierta");
+  b.setAttribute("aria-expanded", abierta);
+});
+
+$("#visor").addEventListener("click", (e) => { if (e.target === $("#visor")) cerrarVisor(); });
+$("#visorCerrar").addEventListener("click", cerrarVisor);
+$("#visorPrev").addEventListener("click", () => pasoVisor(-1));
+$("#visorNext").addEventListener("click", () => pasoVisor(1));
+$("#visorSon").addEventListener("click", () => {
+  vSonido = !vSonido;
+  $("#visorSon").textContent = vSonido ? "🔊" : "🔇";
+  const v = $("#visorTela").querySelector("video.visor-media");
+  if (v) { v.muted = !vSonido; if (vSonido) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } }
+});
+addEventListener("keydown", (e) => {
+  if (vIdx === null) return;
+  if (e.key === "Escape") cerrarVisor();
+  if (e.key === "ArrowRight") pasoVisor(1);
+  if (e.key === "ArrowLeft") pasoVisor(-1);
+});
+
+/* Swipe: horizontal pasa, vertical hacia abajo cierra. */
+let tx = 0, ty = 0;
+$("#visorTela").addEventListener("touchstart", (e) => {
+  tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY;
+}, {passive: true});
+$("#visorTela").addEventListener("touchend", (e) => {
+  const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+  if (dy > 95 && Math.abs(dy) > Math.abs(dx)) { cerrarVisor(); return; }
+  if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) pasoVisor(dx < 0 ? 1 : -1);
+}, {passive: true});
+</script>
+</body>
+</html>
