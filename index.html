@@ -934,6 +934,14 @@ const TRAD = {
   "Alojado fuera de Telegram": "Hosted outside Telegram",
   "Garantía de por vida": "Lifetime guarantee",
   "Pago único, sin mensualidades": "One payment, no subscription",
+
+  /* TonyFlash: mismo texto que botventas/data/productos.json (descripcion_en),
+     no traducido a mano. */
+  "Entrega en menos de 5 minutos": "Delivered in under 5 minutes",
+  "Reposición sin costo": "Free replacement",
+  "Soporte por el mismo bot": "Support through this same bot",
+  "TonyFlash: un solo pago, acceso de por vida. Sin mensualidades ni renovaciones — la entrega es automática por este mismo bot, y si algo falla se repone sin costo.":
+    "TonyFlash: one-time payment, lifetime access. No monthly fees, no renewals — delivery is automatic through this same bot, and if anything breaks it gets replaced at no cost.",
   "Entrega automática e inmediata": "Automatic, instant delivery",
   "Garantía de reposición": "Replacement guarantee",
   "Soporte 24/7 por Telegram": "24/7 support on Telegram",
@@ -998,6 +1006,14 @@ const C_MX = ["Los 32 estados incluidos", "Verificadas con su red social", "Entr
    caiga el grupo. Por eso encabeza la lista. */
 const F_EXCLUSIVE = ["Alojado fuera de Telegram", "Garantía de por vida", "Pago único, sin mensualidades"];
 
+/* TonyFlash: datos reales de botventas/data/productos.json (producto
+   "tonyflash", plan "permanente", 300 MXN) -- no inventados. Ya está
+   registrado del lado del bot (TOKENS_ORIGEN_PRODUCTO) y del Worker de
+   pago con tarjeta (scripts/clip-worker/worker.js). Lo que falta acá es
+   material propio: las carpetas quedan vacías a propósito. */
+const D_TONYFLASH = "TonyFlash: un solo pago, acceso de por vida. Sin mensualidades ni renovaciones — la entrega es automática por este mismo bot, y si algo falla se repone sin costo.";
+const F_TONYFLASH = ["Entrega en menos de 5 minutos", "Reposición sin costo", "Soporte por el mismo bot"];
+
 const SECTIONS = [
   {
     id: "catalogo-mx", titulo: "MX Filtradas", bot: "MX", pago: "MX",
@@ -1055,6 +1071,23 @@ const SECTIONS = [
       { nombre: "", precio: "", linkBot: "https://t.me/TonyExclusivooobot",
         descripcion: "Contenido exclusivo alojado fuera de Telegram. Un solo pago, acceso de por vida, sin mensualidades. El material no vive en el grupo: si el grupo se cae, tu acceso sigue.",
         caracteristicas: F_EXCLUSIVE, media: media("p16", 0, 1) }
+    ]
+  },
+  {
+    /* Sin material propio todavía: las 3 carpetas (p17-p19) están
+       vacías y media(...,0,0) da un array vacío, así que la tarjeta
+       muestra el hueco de "muestra" en vez de romperse. Cuando haya
+       fotos/videos reales, solo hay que subir los archivos a
+       img/p17.. y subir el conteo en el media() de cada producto. */
+    id: "tonyflash", titulo: "TonyFlash", bot: "tonyflash", pago: "tonyflash",
+    kicker: "— completar: kicker de TonyFlash —",
+    productos: [
+      { nombre: "", precio: "", linkBot: "",
+        descripcion: D_TONYFLASH, caracteristicas: F_TONYFLASH, media: media("p17", 0, 0) },
+      { nombre: "", precio: "", linkBot: "",
+        descripcion: D_TONYFLASH, caracteristicas: F_TONYFLASH, media: media("p18", 0, 0) },
+      { nombre: "", precio: "", linkBot: "",
+        descripcion: D_TONYFLASH, caracteristicas: F_TONYFLASH, media: media("p19", 0, 0) }
     ]
   }
 ];
